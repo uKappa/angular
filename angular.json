@@ -78,6 +78,10 @@
               "buildTarget": "angular:build:development"
             }
           },
+          "options": {
+            "browserTarget": "angular:build",
+            "proxyConfig": "src/proxy.conf.json"
+        },
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
@@ -106,5 +110,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

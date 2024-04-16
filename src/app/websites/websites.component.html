@@ -1,0 +1,8 @@
+<h1>List of websites</h1>
+<ul class="websites">
+    <li *ngFor="let website of websites" (click)="onSelected(website)">
+        <span>{{website.id}}</span> {{website.url}}
+    </li>
+</ul>
+
+<app-website-detail [website]="selectedWebsite"></app-website-detail>

@@ -1,0 +1,8 @@
+<div *ngIf="website">
+    <h2>{{website.url}} Details</h2>
+    <div>id: {{website.id}}</div>
+    <div>
+      <label for="Website-url">Website url: </label>
+      <input id="Website-url" [(ngModel)]="website.url" placeholder="url">
+    </div>
+  </div>
