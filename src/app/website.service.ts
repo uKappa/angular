@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Website } from "./website";
-import { WEBSITES } from './mock-sites';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 

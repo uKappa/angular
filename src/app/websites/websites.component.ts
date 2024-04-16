@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Estado } from '../estado';
 import { Website } from '../website';
-import { WEBSITES } from '../mock-sites';
 import { WebsiteService } from "../website.service";
 
 @Component({
