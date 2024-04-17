@@ -28,4 +28,13 @@ export class WebsitesComponent {
     this.websiteService.getWebsites().subscribe(x => this.websites = x);
   }
 
+  add(url: string): void {
+    url = url.trim();
+    if (!url) { return; }
+    this.websiteService.addWebsite({ url: url, id: 5, estado: Estado.PorAvaliar } as Website) //TODO alterar id nisto
+      .subscribe(website => {
+        this.websites.push(website);
+      });
+  }
+
 }

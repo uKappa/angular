@@ -5,4 +5,14 @@
     </li>
 </ul>
 
+<div>
+    <label for="new-website">Website url: </label>
+    <input id="new-website" #websiteUrl />
+
+    <button type="button" class="add-button" (click)="add(websiteUrl.value); websiteUrl.value=''">
+        Add website
+    </button>
+</div>
+
+
 <app-website-detail [website]="selectedWebsite"></app-website-detail>
