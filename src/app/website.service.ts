@@ -26,5 +26,10 @@ export class WebsiteService {
     return this.http.post<Website>("http://localhost:3000/catalog/website/create", website, this.httpOptions)
   }
 
+  updateWebsite(website: Website): Observable<any>{
+    return this.http.put("http://localhost:3000/catalog/website/update", website, this.httpOptions) //modar url
+  }
+
+  
 }
 

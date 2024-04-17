@@ -2,7 +2,16 @@
     <h2>{{website.url}} Details</h2>
     <div>id: {{website.id}}</div>
     <div>
-      <label for="Website-url">Website url: </label>
-      <input id="Website-url" [(ngModel)]="website.url" placeholder="url">
+      <label for="Website-url">url associado: </label>
+      <input id="Website-url" placeholder="url" [(ngModel)]="newUrl">
+    </div>
+    <div *ngIf="website.urls && website.urls.length > 0">
+      <h3>URLs associadas:</h3>
+      <ul>
+        <li *ngFor="let url of website.urls">{{ url }}</li>
+      </ul>
     </div>
   </div>
+  <button type="button" (click)="addUrl()">add url</button>
+
+  

@@ -9,6 +9,7 @@ export interface Website {
         enum: ["PorAvaliar", "EmAvaliacao", "Avaliado", "Erro"],
         default: "PorAvaliar",
       }*/
-    estado: Estado
+    estado: Estado,
+    urls: String[]
     //data registo, data ultima avaliacao, talvez lista de urls especificos do site
 }
