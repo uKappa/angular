@@ -28,10 +28,21 @@ export class WebsitesComponent {
     this.websiteService.getWebsites().subscribe(x => this.websites = x);
   }
 
+  isValidUrl(url: string): boolean {
+    // Expressão regular para validar URLs
+    const urlPattern = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
+    return urlPattern.test(url);
+  }
+  
+  notValid() {
+    alert('Invalid URL')
+  }
+  
+
   add(url: string): void {
     url = url.trim();
     if (!url) { return; }
-    this.websiteService.addWebsite({ url: url, id: 5, estado: Estado.PorAvaliar, urls: [] } as unknown as Website) //TODO alterar id nisto
+    this.websiteService.addWebsite({ url: url, estado: Estado.PorAvaliar, urls: [] } as unknown as Website) //TODO alterar id nisto
       .subscribe(website => {
         this.websites.push(website);
       });

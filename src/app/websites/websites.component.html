@@ -2,16 +2,16 @@
 <ul class="websites">
     <li *ngFor="let website of websites">
         <a routerLink="/detail/{{website._id}}">
-            <span>{{website.id}}</span> {{website.url}}
+            <span>{{website.url}}</span> 
         </a>
     </li>
 </ul>
 
 <div>
     <label for="new-website">Website url: </label>
-    <input id="new-website" #websiteUrl />
+    <input id="new-website" #websiteUrl  />
 
-    <button type="button" class="add-button" (click)="add(websiteUrl.value); websiteUrl.value=''">
+    <button type="button" class="add-button" (click)="isValidUrl(websiteUrl.value) ? add(websiteUrl.value) : notValid(); websiteUrl.value=''">
         Add website
     </button>
 </div>

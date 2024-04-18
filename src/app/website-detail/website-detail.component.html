@@ -1,11 +1,10 @@
 <div *ngIf="website">
     <h2>{{website.url}} Details</h2>
-    <div>id: {{website.id}}</div>
     <div>
       <label for="Website-url">url associado: </label>
-      <input id="Website-url" placeholder="url" [(ngModel)]="newUrl">
+      <input id="Website-url" placeholder="url" [(ngModel)]="newUrl" #websiteUrl>
     </div>
-    <button type="button" (click)="addUrl()">add url</button>
+    <button type="button" (click)="isValidUrl(websiteUrl.value) ? addUrl() : notValid(); ">add url</button>
     <div *ngIf="website.urls && website.urls.length > 0">
       <h3>URLs associadas:</h3>
       <ul>

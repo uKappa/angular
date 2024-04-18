@@ -2,8 +2,7 @@ import { Estado } from "./estado";
 
 export interface Website {
     _id: Object,
-    id: number,
-    url: String,
+    url: string,
     /*estado: {
         type: String,
         required: true,
@@ -11,6 +10,6 @@ export interface Website {
         default: "PorAvaliar",
       }*/
     estado: Estado,
-    urls: String[]
+    urls: string[]
     //data registo, data ultima avaliacao, talvez lista de urls especificos do site
 }
