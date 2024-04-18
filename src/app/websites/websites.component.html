@@ -1,7 +1,9 @@
 <h1>List of websites</h1>
 <ul class="websites">
-    <li *ngFor="let website of websites" (click)="onSelected(website)">
-        <span>{{website.id}}</span> {{website.url}}
+    <li *ngFor="let website of websites">
+        <a routerLink="/detail/{{website._id}}">
+            <span>{{website.id}}</span> {{website.url}}
+        </a>
     </li>
 </ul>
 
@@ -15,4 +17,3 @@
 </div>
 
 
-<app-website-detail [website]="selectedWebsite"></app-website-detail>

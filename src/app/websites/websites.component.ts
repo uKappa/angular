@@ -31,7 +31,7 @@ export class WebsitesComponent {
   add(url: string): void {
     url = url.trim();
     if (!url) { return; }
-    this.websiteService.addWebsite({ url: url, id: 5, estado: Estado.PorAvaliar, urls: [] } as Website) //TODO alterar id nisto
+    this.websiteService.addWebsite({ url: url, id: 5, estado: Estado.PorAvaliar, urls: [] } as unknown as Website) //TODO alterar id nisto
       .subscribe(website => {
         this.websites.push(website);
       });

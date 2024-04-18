@@ -1,6 +1,7 @@
 import { Estado } from "./estado";
 
 export interface Website {
+    _id: Object,
     id: number,
     url: String,
     /*estado: {

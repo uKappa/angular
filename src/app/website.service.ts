@@ -18,6 +18,11 @@ export class WebsiteService {
 
   constructor(private http: HttpClient) { }
 
+  getWebsite(_id: Object): Observable<Website> {
+    const url = `http://localhost:3000/catalog/website/${_id}`;
+    return this.http.get<Website>(url).pipe();
+  }
+
   getWebsites(): Observable<Website[]>{
     return this.http.get<Website[]>("http://localhost:3000/catalog/websites").pipe();
   }

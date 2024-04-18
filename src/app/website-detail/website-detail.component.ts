@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Website } from '../website';
 import { WebsiteService } from '../website.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-website-detail',
@@ -13,7 +14,17 @@ export class WebsiteDetailComponent {
 
   @Input() newUrl?: String;
 
-  constructor(private websiteService: WebsiteService) {}
+  constructor(private websiteService: WebsiteService, private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.getWebsite();
+  }
+
+
+  getWebsite() {
+    const id = Object(this.route.snapshot.paramMap.get('_id'));
+    this.websiteService.getWebsite(id).subscribe(x => this.website = x)
+  }
 
 
   addUrl(): void {
@@ -27,5 +38,6 @@ export class WebsiteDetailComponent {
       console.log('Por favor, insira uma URL válida.');
     }
   }
+
 
 }
