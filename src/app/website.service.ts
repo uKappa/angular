@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Website } from "./website";
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Url } from './url';
 
 
 @Injectable({
@@ -27,8 +28,9 @@ export class WebsiteService {
     return this.http.get<Website[]>("http://localhost:3000/catalog/websites").pipe();
   }
 
-  addWebsite(website: Website): Observable<Website> {
-    return this.http.post<Website>("http://localhost:3000/catalog/website/create", website, this.httpOptions)
+  addWebsite(url: Url): Observable<Website> {
+    console.log(url)
+    return this.http.post<Website>("http://localhost:3000/catalog/website/create", url, this.httpOptions)
   }
 
   updateWebsite(website: Website): Observable<any>{

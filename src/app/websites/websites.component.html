@@ -2,7 +2,7 @@
 <ul class="websites">
     <li *ngFor="let website of websites">
         <a routerLink="/detail/{{website._id}}">
-            <span>{{website.url}}</span> 
+            <span>{{website.url.link}} {{website.data_registo}} {{website.url.ultima_aval}} {{website.estado}}</span> 
         </a>
     </li>
 </ul>

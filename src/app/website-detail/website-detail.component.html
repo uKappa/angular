@@ -1,5 +1,5 @@
 <div *ngIf="website">
-    <h2>{{website.url}} Details</h2>
+    <h2>{{website.url.link}} Details</h2>
     <div>
       <label for="Website-url">url associado: </label>
       <input id="Website-url" placeholder="url" [(ngModel)]="newUrl" #websiteUrl>
@@ -8,7 +8,7 @@
     <div *ngIf="website.urls && website.urls.length > 0">
       <h3>URLs associadas:</h3>
       <ul>
-        <li *ngFor="let url of website.urls">{{ url }}</li>
+        <li *ngFor="let url of website.urls">{{ url.link }} {{ url.ultima_aval }} {{ url.estado }}</li>
       </ul>
     </div>
   </div>

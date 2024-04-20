@@ -2,6 +2,9 @@ import { Component, Input } from '@angular/core';
 import { Website } from '../website';
 import { WebsiteService } from '../website.service';
 import { ActivatedRoute } from '@angular/router';
+import { link } from 'fs';
+import { Url } from '../url';
+import { EstadoPag } from '../estadoPag';
 
 @Component({
   selector: 'app-website-detail',
@@ -40,11 +43,17 @@ export class WebsiteDetailComponent {
   addUrl(): void {
     if (this.newUrl && this.website) {
 
-      if (!this.newUrl.startsWith(this.website.url)) {
+      if (!this.newUrl.startsWith(this.website.url.link)) {
         alert('Os URLs específicos devem pertencer ao mesmo domínio.');
         return;
       }
-      this.website.urls.push(this.newUrl);
+      var a: Url = {
+        link: this.newUrl,
+        estado: EstadoPag.Naoconforme,
+        ultima_aval: new Date()
+      }
+      console.log(a)
+      this.website.urls.push(a);
       this.websiteService.updateWebsite(this.website).subscribe(() => {
       // Atualize o website no servidor (se necessário)
       console.log('URL adicionada com sucesso:', this.newUrl);

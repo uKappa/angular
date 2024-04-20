@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Estado } from '../estado';
 import { Website } from '../website';
+import { Url } from '../url';
 import { WebsiteService } from "../website.service";
+import { EstadoPag } from '../estadoPag';
 
 @Component({
   selector: 'app-websites',
@@ -14,6 +16,8 @@ export class WebsitesComponent {
 
   websites: Website[] = [];
 
+  urls: Url[] = [];
+
   constructor(private websiteService: WebsiteService){}
 
   onSelected(website: Website): void{
@@ -22,12 +26,16 @@ export class WebsitesComponent {
 
   ngOnInit(): void{
     this.getWebsites();
+    if (this.websites[1].url) {
+      const link = this.websites[1].url.link;
+      console.log(link); // Deve imprimir o link
+    }
   }
 
   getWebsites(): void{
     this.websiteService.getWebsites().subscribe(x => this.websites = x);
   }
-
+  
   isValidUrl(url: string): boolean {
     // Expressão regular para validar URLs
     const urlPattern = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i;
@@ -42,7 +50,11 @@ export class WebsitesComponent {
   add(url: string): void {
     url = url.trim();
     if (!url) { return; }
-    this.websiteService.addWebsite({ url: url, estado: Estado.PorAvaliar, urls: [] } as unknown as Website) //TODO alterar id nisto
+    const newUrl: Url = {link: url, estado: EstadoPag.Naoconforme, ultima_aval: new Date()};
+
+    console.log(newUrl)
+
+    this.websiteService.addWebsite(newUrl) 
       .subscribe(website => {
         this.websites.push(website);
       });
