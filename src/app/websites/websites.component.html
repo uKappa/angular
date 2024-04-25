@@ -8,12 +8,11 @@
         <span>Estado</span>
     </li>
     <li *ngFor="let website of websites" class="website-item">
-        <a routerLink="/detail/{{ website._id }}" class="website-link">
-            <span>{{ website?.url?.link }}</span>
+            <span><a routerLink="/detail/{{ website._id }}" class="website-link">{{ website?.url?.link }}</a></span>
             <span>{{ website?.data_registo | date: 'dd/MM/yyyy' }}</span>
             <span>{{ website?.url?.ultima_aval | date: 'dd/MM/yyyy' }}</span>
             <span>{{ website?.estado }}</span>
-        </a>
+        
     </li>
 </ul>
 
