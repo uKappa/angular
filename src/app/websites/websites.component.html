@@ -1,19 +1,28 @@
 <h1>List of websites</h1>
-<ul class="websites">
-    <li *ngFor="let website of websites">
-        <a routerLink="/detail/{{website._id}}">
-            <span>{{website.url.link}} {{website.data_registo}} {{website.url.ultima_aval}} {{website.estado}}</span> 
+
+<ul class="website-list">
+    <li class="website-item">
+        <span>Link</span>
+        <span>Data Registo</span>
+        <span>Última Avaliação</span>
+        <span>Estado</span>
+    </li>
+    <li *ngFor="let website of websites" class="website-item">
+        <a routerLink="/detail/{{ website._id }}" class="website-link">
+            <span>{{ website?.url?.link }}</span>
+            <span>{{ website?.data_registo | date: 'dd/MM/yyyy' }}</span>
+            <span>{{ website?.url?.ultima_aval | date: 'dd/MM/yyyy' }}</span>
+            <span>{{ website?.estado }}</span>
         </a>
     </li>
 </ul>
 
-<div>
-    <label for="new-website">Website url: </label>
-    <input id="new-website" #websiteUrl  />
-
-    <button type="button" class="add-button" (click)="isValidUrl(websiteUrl.value) ? add(websiteUrl.value) : notValid(); websiteUrl.value=''">
-        Add website
-    </button>
+<div class="input-container">
+    <label for="new-website">Website url:</label>
+    <input id="new-website" #websiteUrl class="url-input" />
 </div>
 
-
+<button type="button" class="add-button" 
+        (click)="isValidUrl(websiteUrl.value) ? add(websiteUrl.value) : notValid(); websiteUrl.value=''">
+    Add website
+</button>

@@ -43,21 +43,28 @@ export class WebsiteDetailComponent {
   addUrl(): void {
     if (this.newUrl && this.website) {
 
-      if (!this.newUrl.startsWith(this.website.url.link)) {
-        alert('Os URLs específicos devem pertencer ao mesmo domínio.');
-        return;
+      if (this.website.url) {
+        if (!this.newUrl.startsWith(this.website.url.link)) {
+          alert('Os URLs específicos devem pertencer ao mesmo domínio.');
+          return;
+        }
+        var a: Url = {
+          link: this.newUrl,
+          estado: EstadoPag.Naoconforme,
+          ultima_aval: new Date()
+        }
+
+        if (!this.website.urls) {
+          this.website.urls = [];
+        }
+        console.log(a)
+        this.website.urls.push(a);
+        this.websiteService.updateWebsite(this.website).subscribe(() => {
+        // Atualize o website no servidor (se necessário)
+        console.log('URL adicionada com sucesso:', a.link);
+        });
       }
-      var a: Url = {
-        link: this.newUrl,
-        estado: EstadoPag.Naoconforme,
-        ultima_aval: new Date()
-      }
-      console.log(a)
-      this.website.urls.push(a);
-      this.websiteService.updateWebsite(this.website).subscribe(() => {
-      // Atualize o website no servidor (se necessário)
-      console.log('URL adicionada com sucesso:', this.newUrl);
-      });
+      
     } else {
       console.log('Por favor, insira uma URL válida.');
     }

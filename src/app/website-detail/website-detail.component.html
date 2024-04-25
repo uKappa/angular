@@ -1,17 +1,25 @@
-<div *ngIf="website">
-    <h2>{{website.url.link}} Details</h2>
-    <div>
-      <label for="Website-url">url associado: </label>
-      <input id="Website-url" placeholder="url" [(ngModel)]="newUrl" #websiteUrl>
-    </div>
-    <button type="button" (click)="isValidUrl(websiteUrl.value) ? addUrl() : notValid(); ">add url</button>
-    <div *ngIf="website.urls && website.urls.length > 0">
-      <h3>URLs associadas:</h3>
-      <ul>
-        <li *ngFor="let url of website.urls">{{ url.link }} {{ url.ultima_aval }} {{ url.estado }}</li>
-      </ul>
-    </div>
+<div *ngIf="website" class="website-details">
+  <h2 class="website-title">{{website.url.link}} Details</h2>
+  <div class="input-container">
+    <label for="Website-url">URL associado:</label>
+    <input id="Website-url" class="url-input" placeholder="URL" [(ngModel)]="newUrl" #websiteUrl>
   </div>
- 
+  <button type="button" class="add-button" (click)="isValidUrl(websiteUrl.value) ? addUrl() : notValid()">Adicionar URL</button>
+  <div *ngIf="website.urls && website.urls.length > 0" class="associated-urls">
+    <h3>URLs associadas:</h3>
+    <ul class="url-list">
+      <li  class="url-item">
+        <span>Link</span>
+        <span>Última Avaliação</span>
+        <span>Estado da Página</span>
+      </li>
+      <li *ngFor="let url of website.urls" class="url-item">
+        <span>{{ url?.link }}</span>
+        <span>{{ url?.ultima_aval | date: 'dd/MM/yyyy' }}</span>
+        <span>{{ url?.estado }}</span>
+      </li>
+    </ul>
+  </div>
+</div>
 
   

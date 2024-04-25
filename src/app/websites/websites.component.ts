@@ -24,11 +24,11 @@ export class WebsitesComponent {
     this.selectedWebsite = website;
   }
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.getWebsites();
-    if (this.websites[1].url) {
+    if (this.websites.length > 1 && this.websites[1].url) {
       const link = this.websites[1].url.link;
-      console.log(link); // Deve imprimir o link
+      console.log(link); 
     }
   }
 
