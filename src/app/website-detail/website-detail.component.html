@@ -15,7 +15,9 @@
       </li>
       <li *ngFor="let url of website.urls" class="url-item">
         <span>{{ url?.link }}</span>
-        <span>{{ url?.ultima_aval | date: 'dd/MM/yyyy' }}</span>
+        <span>
+          {{ website?.url?.ultima_aval ? (website.url.ultima_aval | date: 'dd/MM/yyyy') : 'não foi avaliado' }}
+        </span>
         <span>{{ url?.estado }}</span>
       </li>
     </ul>

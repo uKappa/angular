@@ -51,7 +51,7 @@ export class WebsiteDetailComponent {
         var a: Url = {
           link: this.newUrl,
           estado: EstadoPag.Naoconforme,
-          ultima_aval: new Date()
+          ultima_aval: null
         }
 
         if (!this.website.urls) {

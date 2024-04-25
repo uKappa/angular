@@ -17,6 +17,7 @@ export class WebsitesComponent {
   websites: Website[] = [];
 
   urls: Url[] = [];
+new: any;
 
   constructor(private websiteService: WebsiteService){}
 
@@ -50,7 +51,7 @@ export class WebsitesComponent {
   add(url: string): void {
     url = url.trim();
     if (!url) { return; }
-    const newUrl: Url = {link: url, estado: EstadoPag.Naoconforme, ultima_aval: new Date()};
+    const newUrl: Url = {link: url, estado: EstadoPag.Naoconforme, ultima_aval: null};
 
     console.log(newUrl)
 
