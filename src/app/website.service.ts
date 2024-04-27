@@ -10,7 +10,7 @@ import { Url } from './url';
 })
 export class WebsiteService {
 
-  httpURL = "http://localhost:3000/catalog/websites"
+  httpURL = "http://localhost:3058/catalog"
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -20,21 +20,21 @@ export class WebsiteService {
   constructor(private http: HttpClient) { }
 
   getWebsite(_id: Object): Observable<Website> {
-    const url = `http://localhost:3000/catalog/website/${_id}`;
+    const url = `${this.httpURL}/website/${_id}`;
     return this.http.get<Website>(url).pipe();
   }
 
   getWebsites(): Observable<Website[]>{
-    return this.http.get<Website[]>("http://localhost:3000/catalog/websites").pipe();
+    return this.http.get<Website[]>(`${this.httpURL}/websites`).pipe();
   }
 
   addWebsite(url: Url): Observable<Website> {
     console.log(url)
-    return this.http.post<Website>("http://localhost:3000/catalog/website/create", url, this.httpOptions)
+    return this.http.post<Website>(`${this.httpURL}/website/create`, url, this.httpOptions)
   }
 
   updateWebsite(website: Website): Observable<any>{
-    return this.http.put("http://localhost:3000/catalog/website/update", website, this.httpOptions) //modar url
+    return this.http.put(`${this.httpURL}/website/update`, website, this.httpOptions) //modar url
   }
 
   
