@@ -37,7 +37,6 @@ export class WebsitesComponent {
 
   getWebsites(): void{
     this.websiteService.getWebsites().subscribe(x => this.websites = x);
-    this.applyFilterAndSort();
   }
 
   applyFilterAndSort(): void {
