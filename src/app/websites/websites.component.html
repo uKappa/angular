@@ -1,5 +1,16 @@
 <h1>List of websites</h1>
 
+<div class="options-container">
+    <label for="sorting-option">Sort by:</label>
+    <select id="sorting-option" [(ngModel)]="sortingOption" (change)="applyFilterAndSort()">
+      <option value="data_registo">Registration Date</option>
+      <option value="ultima_aval">Last Evaluation Date</option>
+    </select>
+  
+  </div>
+  
+
+
 <ul class="website-list">
     <li class="website-item">
         <span>Link</span>
