@@ -10,8 +10,8 @@ import { Url } from './url';
 })
 export class WebsiteService {
 
-  //httpURL = "http://localhost:3058/catalog"
-  httpURL = "http://localhost:3000/catalog"
+  httpURL = "http://localhost:3058/catalog"
+  //httpURL = "http://localhost:3000/catalog"
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
