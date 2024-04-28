@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { WebsitesComponent } from './websites/websites.component';
 import { FormsModule } from '@angular/forms';
 import { WebsiteDetailComponent } from './website-detail/website-detail.component';
+import { MaterialModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +20,9 @@ import { WebsiteDetailComponent } from './website-detail/website-detail.componen
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [
     provideClientHydration()
