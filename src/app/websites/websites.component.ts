@@ -60,7 +60,7 @@ export class WebsitesComponent {
   }
   
   notValid() {
-    alert('Invalid URL')
+    alert('Invalid URL: URL Should begin with http://, https:// or ftp://, can\'t have a blank space')
   }
   
 
