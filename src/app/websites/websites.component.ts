@@ -77,4 +77,9 @@ export class WebsitesComponent {
       });
   }
 
+  delete(website: Website): void {
+    this.websites = this.websites.filter(h => h !== website);
+    this.websiteService.deleteWebsite(website._id).subscribe();
+  }
+
 }

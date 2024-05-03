@@ -25,7 +25,8 @@
                 {{ website?.url?.ultima_aval ? (website.url.ultima_aval | date: 'dd/MM/yyyy') : 'não foi avaliado' }}
             </span>
             <span>{{ website?.estado }}</span>
-        
+            <button type="button" class="delete" title="delete hero"
+            (click)="delete(website)">x</button>
     </li>
 </ul>
 
