@@ -27,6 +27,7 @@ export class WebsitesComponent {
   constructor(private websiteService: WebsiteService){}
 
   mostrarCheckboxes() {
+    this.selectedWebsites = [];
     this.mostrarChecks = !this.mostrarChecks;
   }
 
