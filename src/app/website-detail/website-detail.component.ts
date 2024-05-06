@@ -70,4 +70,9 @@ export class WebsiteDetailComponent {
     }
   }
 
+
+  delete(url: Url): void {
+    this.websiteService.deletePagina(url).subscribe();
+  }
+
 }
