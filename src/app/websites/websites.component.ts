@@ -85,8 +85,17 @@ export class WebsitesComponent {
   }
 
   delete(website: Website): void {
-    this.websites = this.websites.filter(h => h !== website);
-    this.websiteService.deleteWebsite(website._id).subscribe();
+    //this.websites = this.websites.filter(h => h !== website);
+    //this.websiteService.deleteWebsite(website._id).subscribe();
+    if (website.urls && website.urls.length > 0) {
+      if (confirm('Este website tem páginas associadas. Tem certeza de que deseja excluí-lo?')) {
+        this.websites = this.websites.filter(h => h !== website);
+        this.websiteService.deleteWebsite(website._id).subscribe();
+      }
+    } else {
+      this.websites = this.websites.filter(h => h !== website);
+      this.websiteService.deleteWebsite(website._id).subscribe();
+    }
   }  
 
   toggleSelection(website: Website): void {
@@ -104,5 +113,4 @@ export class WebsitesComponent {
   iniciarAvaliacao(): void {
     this.websiteService.iniciarAvaliacao(this.selectedWebsites).subscribe();
   }
-
 }

@@ -46,6 +46,10 @@ export class WebsiteService {
     // Enviar dados dos checkboxs selecionados para o backend
     return this.http.post<any>(`${this.httpURL}/website/evaluate`, selectedWebsites)
   }
+
+  deletePagina(url: Url): Observable<Url> {
+    return this.http.delete<Url>(`${this.httpURL}/pagina/delete/${url._id}`, this.httpOptions)
+  }
   
 }
 
