@@ -6,6 +6,7 @@
       <option value="data_registo">Registration Date</option>
       <option value="ultima_aval">Last Evaluation Date</option>
     </select>
+    <button type="button" class="select-button" (click)="mostrarCheckboxes()">Selecionar Sites</button>
 </div>
   
 
@@ -18,6 +19,9 @@
         <span>Estado</span>
     </li>
     <li *ngFor="let website of websites" class="website-item">
+        <div *ngIf="mostrarChecks">
+            <input type="checkbox" (change)="toggleSelection(website)">
+        </div>
             <span><a routerLink="/detail/{{ website._id }}" class="website-link">{{ website?.url?.link }}</a></span>
             <span>{{ website?.data_registo | date: 'dd/MM/yyyy' }}</span>
             <span>
@@ -25,9 +29,13 @@
             </span>
             <span>{{ website?.estado }}</span>
             <button type="button" class="delete" title="delete hero"
-            (click)="delete(website)">x</button>
+            (click)="delete(website)">X</button>
     </li>
 </ul>
+
+<div *ngIf="mostrarChecks">
+    <button (click)="iniciarAvaliacao()">Iniciar Avaliação</button>
+</div>
 
 <div class="input-container">
     <label for="new-website">Website url:</label>

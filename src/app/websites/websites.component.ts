@@ -13,6 +13,9 @@ import { EstadoPag } from '../estadoPag';
 export class WebsitesComponent {
 
   selectedWebsite?: Website;
+  selectedWebsites: Website[] = [];
+
+  mostrarChecks: boolean = false;
 
   websites: Website[] = [];
 
@@ -22,6 +25,10 @@ export class WebsitesComponent {
   sortingOption: string = 'data_registo';
 
   constructor(private websiteService: WebsiteService){}
+
+  mostrarCheckboxes() {
+    this.mostrarChecks = !this.mostrarChecks;
+  }
 
   onSelected(website: Website): void{
     this.selectedWebsite = website;
@@ -80,6 +87,22 @@ export class WebsitesComponent {
   delete(website: Website): void {
     this.websites = this.websites.filter(h => h !== website);
     this.websiteService.deleteWebsite(website._id).subscribe();
+  }  
+
+  toggleSelection(website: Website): void {
+    //const index = this.selectedWebsites.indexOf(website);
+    if (this.selectedWebsites.includes(website)) {
+      //this.selectedWebsites.push(website); // Adiciona o site se não estiver selecionado
+      this.selectedWebsites = this.selectedWebsites.filter(item => item !== website);
+    } else {
+      //this.selectedWebsites.splice(index, 1); // Remove o site se já estiver selecionado
+      this.selectedWebsites.push(website);
+    }
+    console.log(this.selectedWebsites);
+  }
+
+  iniciarAvaliacao(): void {
+    this.websiteService.iniciarAvaliacao(this.selectedWebsites).subscribe();
   }
 
 }

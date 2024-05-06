@@ -42,7 +42,7 @@ export class WebsiteDetailComponent {
 
   addUrl(): void {
     if (this.newUrl && this.website) {
-
+      
       if (this.website.url) {
         if (!this.newUrl.startsWith(this.website.url.link)) {
           alert('Os URLs específicos devem pertencer ao mesmo domínio.');
