@@ -60,8 +60,7 @@ export class WebsiteDetailComponent {
         console.log(a)
         this.website.urls.push(a);
         this.websiteService.updateWebsite(this.website).subscribe(() => {
-        // Atualize o website no servidor (se necessário)
-        console.log('URL adicionada com sucesso:', a.link);
+          console.log('URL adicionada com sucesso:', a.link);
         });
       }
       
