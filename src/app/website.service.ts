@@ -43,7 +43,6 @@ export class WebsiteService {
   }
 
   iniciarAvaliacao(selectedWebsites: Website[]): Observable<any>{
-    // Enviar dados dos checkboxs selecionados para o backend
     return this.http.put(`${this.httpURL}/website/evaluate`, selectedWebsites, this.httpOptions)
   }
 
