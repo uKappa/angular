@@ -25,8 +25,10 @@ export class WebsiteDetailComponent {
 
 
   getWebsite() {
-    const id = Object(this.route.snapshot.paramMap.get('_id'));
-    this.websiteService.getWebsite(id).subscribe(x => this.website = x)
+    if (this.website && this.website._id) {
+      const id = this.website._id;
+      this.websiteService.getWebsite(id).subscribe(x => this.website = x);
+    }
   }
 
   isValidUrl(url: string): boolean {
