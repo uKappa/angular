@@ -1,12 +1,13 @@
-<h1>List of websites</h1>
+<div class="web-body">
+    <h1>List of websites</h1>
 
 <div class="options-container">
     <label for="sorting-option">Sort by:</label>
-    <select id="sorting-option" [(ngModel)]="sortingOption" (change)="applyFilterAndSort()">
-      <option value="data_registo">Registration Date</option>
-      <option value="ultima_aval">Last Evaluation Date</option>
-    </select>
-    <button type="button" class="select-button" (click)="mostrarCheckboxes()">Selecionar Sites</button>
+    <mat-select id="sorting-option" [(ngModel)]="sortingOption" (change)="applyFilterAndSort()">
+      <mat-option value="data_registo">Registration Date</mat-option>
+      <mat-option value="ultima_aval">Last Evaluation Date</mat-option>
+    </mat-select>
+    <button mat-button class="select-button" (click)="mostrarCheckboxes()">Selecionar Sites</button>
 </div>
   
 
@@ -28,7 +29,7 @@
                 {{ website?.url?.ultima_aval ? (website.url.ultima_aval | date: 'dd/MM/yyyy') : 'não foi avaliado' }}
             </span>
             <span>{{ website?.estado }}</span>
-            <button type="button" class="delete" title="delete"
+            <button mat-button class="delete" title="delete"
             (click)="delete(website)">X</button>
     </li>
 </ul>
@@ -42,11 +43,15 @@
     <input id="new-website" #websiteUrl class="url-input" />
 </div>
 
-<button type="button" class="add-button" 
+<button mat-button class="add-button" 
         (click)="isValidUrl(websiteUrl.value) ? add(websiteUrl.value) : notValid(); websiteUrl.value=''">
-    Add website
+    Adicionar website
 </button>
 
 <div *ngIf="selectedWebsite" class="website-details">
+    
     <app-website-detail [website]="selectedWebsite"></app-website-detail>
+    <button mat-button class="goback" (click)="goBack()">Fechar detalhes</button>
+</div>
+
 </div>

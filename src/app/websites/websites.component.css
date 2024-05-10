@@ -1,3 +1,13 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.web-body {
+    padding: 20px;
+    margin: 10px;
+    padding-bottom: 40px;
+}
+
 .website-list {
     list-style-type: none;
     padding: 0;
@@ -63,6 +73,10 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 5px;
+}
+
+.website-item:first-child span{
+    margin-bottom: 10px;
 }
 
 .website-item span {

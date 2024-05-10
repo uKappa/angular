@@ -35,7 +35,7 @@ export class WebsiteService {
   }
 
   updateWebsite(website: Website): Observable<any>{
-    return this.http.put(`${this.httpURL}/website/update`, website, this.httpOptions) //modar url
+    return this.http.put(`${this.httpURL}/website/update`, website, this.httpOptions)
   }
 
   deleteWebsite(_id: Object): Observable<Website> {

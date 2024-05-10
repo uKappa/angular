@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { WebsitesComponent } from './websites/websites.component';
 import { FormsModule } from '@angular/forms';
 import { WebsiteDetailComponent } from './website-detail/website-detail.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -17,10 +21,14 @@ import { WebsiteDetailComponent } from './website-detail/website-detail.componen
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatCheckboxModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })

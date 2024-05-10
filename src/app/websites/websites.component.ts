@@ -70,6 +70,10 @@ export class WebsitesComponent {
   notValid() {
     alert('Invalid URL: URL Should begin with http://, https:// or ftp://, can\'t have a blank space')
   }
+
+  goBack() {
+    this.selectedWebsite = undefined;
+  }
   
 
   add(url: string): void {

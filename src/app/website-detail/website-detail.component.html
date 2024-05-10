@@ -4,7 +4,7 @@
     <label for="Website-url">URL associado:</label>
     <input id="Website-url" class="url-input" placeholder="URL" [(ngModel)]="newUrl" #websiteUrl>
   </div>
-  <button type="button" class="add-button" (click)="isValidUrl(websiteUrl.value) ? addUrl() : notValid()">Adicionar URL</button>
+  <button mat-button class="add-button" (click)="isValidUrl(websiteUrl.value) ? addUrl() : notValid()">Adicionar URL</button>
   <div *ngIf="website.urls && website.urls.length > 0" class="associated-urls">
     <h3>URLs associadas:</h3>
     <ul class="url-list">
@@ -20,7 +20,7 @@
         </span>
         <span>{{ url?.estado }}</span>
 
-        <button (click)="delete(url)">x</button>
+        <button mat-button (click)="delete(url)">x</button>
       </li>
     </ul>
   </div>
