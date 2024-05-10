@@ -116,6 +116,10 @@ export class WebsitesComponent {
   }
 
   iniciarAvaliacao(): void {
+    this.selectedWebsites = this.selectedWebsites.filter(website => website.estado === "PorAvaliar");
+    for (const website of this.selectedWebsites) {
+      website.estado = Estado.EmAvaliacao
+    }
     this.websiteService.iniciarAvaliacao(this.selectedWebsites).subscribe();
   }
 }
