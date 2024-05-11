@@ -58,9 +58,18 @@
 
 .url-item:first-child span {
   margin-bottom: 5px;
+  font-weight: bold;
 }
 
 .goback {
   border-color: black;
   border: solid;
+}
+
+.invis-button {
+    visibility: hidden;
+}
+
+h3 {
+    padding-bottom: 15px;
 }

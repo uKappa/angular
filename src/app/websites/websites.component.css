@@ -82,3 +82,25 @@
 .website-item span {
     flex: 1;
 }
+
+.invis-button {
+    visibility: hidden;
+}
+
+.options-container {
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+}
+
+.options-container label {
+    padding-right: 15px;
+}
+
+.aval-section {
+    display: inline;
+    padding-bottom: 20px;
+}
+
+.input-container {
+    padding-top: 20px;
+}
