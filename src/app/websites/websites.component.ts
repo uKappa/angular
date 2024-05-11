@@ -115,7 +115,7 @@ export class WebsitesComponent {
     console.log(this.selectedWebsites);
   }
 
-  iniciarAvaliacao(): void {
+  iniciarAvaliacao(selectedWebsites: Website[]): void {
     this.selectedWebsites = this.selectedWebsites.filter(website => website.estado === "PorAvaliar");
     for (const website of this.selectedWebsites) {
       website.estado = Estado.EmAvaliacao
