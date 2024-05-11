@@ -48,8 +48,7 @@
 }
 
 .add-button {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #2196F3;
     border: none;
     padding: 8px 16px;
     border-radius: 4px;
@@ -94,13 +93,32 @@
 
 .options-container label {
     padding-right: 15px;
+    min-width: 100px;
 }
 
 .aval-section {
-    display: inline;
+    display: block;
     padding-bottom: 20px;
 }
 
 .input-container {
     padding-top: 20px;
+}
+
+.init-button {
+    display: inline;
+    margin-left: 10px;
+}
+
+.aval-button {
+    background-color: #2196F3;
+}
+
+.aval-button:hover {
+    background-color: #0056b3;
+}
+
+.goback {
+    border-color: #222;
+    border: solid;
 }
