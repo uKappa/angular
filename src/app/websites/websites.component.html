@@ -23,7 +23,7 @@
         <div *ngIf="mostrarChecks">
             <input type="checkbox" (change)="toggleSelection(website)">
         </div>
-            <span><a (click)="onSelected(website)" class="website-link">{{ website?.url?.link }}</a></span>
+            <span tabindex="0"><a (click)="onSelected(website)" class="website-link">{{ website?.url?.link }}</a></span>
             <span>{{ website?.data_registo | date: 'dd/MM/yyyy' }}</span>
             <span>
                 {{ website?.url?.ultima_aval ? (website.url.ultima_aval | date: 'dd/MM/yyyy') : 'não foi avaliado' }}
