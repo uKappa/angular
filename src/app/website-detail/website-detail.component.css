@@ -47,7 +47,6 @@
 .url-item {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 15px;
     
 }
 
@@ -67,3 +66,26 @@
 h3 {
     padding-bottom: 15px;
 }
+
+.delete {
+    background-color: #F44336;
+}
+
+.delete:hover {
+    background-color: #D32F2F;
+}
+
+.url-item span {
+    display: flex;
+    align-items: center;
+}
+
+.url-list li {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.url-list li:last-child {
+    border: none;
+}
+

@@ -101,6 +101,10 @@
     padding-bottom: 20px;
 }
 
+.aval-section button {
+    display: inline;
+}
+
 .input-container {
     padding-top: 20px;
 }
@@ -110,15 +114,35 @@
     margin-left: 10px;
 }
 
-.aval-button {
-    background-color: #2196F3;
+.aval-button-div {
+    display: inline;
+    padding-left: 10px;
 }
 
-.aval-button:hover {
-    background-color: #0056b3;
+.select-button {
+    border-color: #222;
+    border: solid;
+}
+
+.aval-button-div button {
+    border-color: #222;
+    border: solid;
 }
 
 .goback {
     border-color: #222;
     border: solid;
+}
+
+.delete {
+    background-color: #F44336;
+}
+
+.delete:hover {
+    background-color: #D32F2F;
+}
+
+.website-item span {
+    display: flex;
+    align-items: center;
 }
