@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Website } from "./website";
-import { Observable, of } from 'rxjs';
+import { interval, Observable, of, Subscription } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Url } from './url';
+import { Repo } from './repo';
 
 
 @Injectable({
@@ -17,8 +18,24 @@ export class WebsiteService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
+  private intervalSubscription: Subscription | undefined;
 
   constructor(private http: HttpClient) { }
+
+  startInterval(callback: () => void, intervalTime: number) {
+    if (!this.intervalSubscription) {
+      this.intervalSubscription = interval(intervalTime).subscribe(() => {
+        callback();
+      });
+    }
+  }
+
+  stopInterval() {
+    if (this.intervalSubscription) {
+      this.intervalSubscription.unsubscribe();
+      this.intervalSubscription = undefined;
+    }
+  }
 
   getWebsite(_id: Object): Observable<Website> {
     const url = `${this.httpURL}/website/${_id}`;
@@ -27,6 +44,11 @@ export class WebsiteService {
 
   getWebsites(): Observable<Website[]>{
     return this.http.get<Website[]>(`${this.httpURL}/websites`).pipe();
+  }
+
+  getReport(_id: Object): Observable<Repo>{
+    const url = `${this.httpURL}/website/report/${_id}`;
+    return this.http.get<Repo>(url).pipe();
   }
 
   addWebsite(url: Url): Observable<Website> {
@@ -43,7 +65,11 @@ export class WebsiteService {
   }
 
   iniciarAvaliacao(selectedWebsites: Website[]): Observable<Website[]>{
-    return this.http.put<Website[]>(`${this.httpURL}/website/evaluate`, selectedWebsites, this.httpOptions).pipe()
+    return this.http.put<Website[]>(`${this.httpURL}/website/evaluate_website`, selectedWebsites, this.httpOptions).pipe()
+  }
+
+  iniciarAvaliacaoUrl(selectedUrls?: Url[]): Observable<Url[]>{
+    return this.http.put<Url[]>(`${this.httpURL}/website/evaluate_url`, selectedUrls, this.httpOptions).pipe()
   }
 
   deletePagina(url: Url): Observable<Url> {

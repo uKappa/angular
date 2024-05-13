@@ -73,13 +73,14 @@ export class WebsitesComponent {
 
   goBack() {
     this.selectedWebsite = undefined;
+    this.websiteService.stopInterval();
   }
   
 
   add(url: string): void {
     url = url.trim();
     if (!url) { return; }
-    const newUrl: Url = {link: url, estado: EstadoPag.Naoconforme, ultima_aval: null};
+    const newUrl: Url = {link: url, estado: EstadoPag.PorAvaliar, ultima_aval: null};
 
     console.log(newUrl)
 
@@ -120,6 +121,6 @@ export class WebsitesComponent {
     for (const website of this.selectedWebsites) {
       website.estado = Estado.EmAvaliacao
     }
-    this.websiteService.iniciarAvaliacao(this.selectedWebsites).subscribe();
+    this.websiteService.iniciarAvaliacao(this.selectedWebsites).subscribe(x => this.websites = x);
   }
 }

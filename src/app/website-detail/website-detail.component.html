@@ -5,6 +5,28 @@
     <input id="Website-url" class="url-input" placeholder="URL" [(ngModel)]="newUrl" #websiteUrl>
   </div>
   <button mat-button class="add-button" (click)="isValidUrl(websiteUrl.value) ? addUrl() : notValid()">Adicionar URL</button>
+  <div>
+    <ul>
+      <li>Total de páginas sem erros:
+        <span>{{noErrorPage}} ({{noErrorPage / numberOfPages * 100}}%)</span>
+      </li>
+      <li>Total e percentagem de páginas com pelo menos um erro de acessibilidade:
+        <span>{{atLeastOneError}} ({{atLeastOneError / numberOfPages * 100}}%)</span>
+      </li>
+      <li>Total e percentagem de páginas com pelo menos um erro de acessibilidade de nível A:
+        <span>{{atLeastOneErrorA}} ({{atLeastOneErrorA / numberOfPages * 100}}%)</span>
+      </li>
+      <li>Total e percentagem de páginas com pelo menos um erro de acessibilidade de nível AA:
+        <span>{{atLeastOneErrorAA}} ({{atLeastOneErrorAA / numberOfPages * 100}}%)</span>
+      </li>
+      <li>Total e percentagem de páginas com pelo menos um erro de acessibilidade de nível AAA:
+        <span>{{atLeastOneErrorAAA}} ({{atLeastOneErrorAAA / numberOfPages * 100}}%)</span>
+      </li>
+      <li>
+        <span>Lista com os 10 erros de acessibilidade mais comuns no total de todas as páginas do website avaliadas:</span>
+      </li>
+    </ul>
+  </div>
   <div *ngIf="website.urls && website.urls.length > 0" class="associated-urls">
     <h3>URLs associadas:</h3>
     <ul class="url-list">
@@ -15,6 +37,9 @@
         <button mat-button class="invis-button"></button>
       </li>
       <li *ngFor="let url of website.urls" class="url-item">
+        <div *ngIf="mostrarChecks">
+          <input type="checkbox" (change)="toggleSelection(url)">
+      </div>
         <span>{{ url?.link }}</span>
         <span>
           {{ website?.url?.ultima_aval ? (website.url.ultima_aval | date: 'dd/MM/yyyy') : 'não foi avaliado' }}
@@ -25,6 +50,11 @@
       </li>
     </ul>
   </div>
+  <div class="aval-section">
+    <button mat-button class="select-button" (click)="mostrarCheckboxes()">Selecionar Sites</button>
+    <div *ngIf="mostrarChecks" class="aval-button-div">
+    <button mat-button (click)="iniciarAvaliacao(selectedUrls)">Iniciar Avaliação</button>
+</div>
 </div>
 
   
