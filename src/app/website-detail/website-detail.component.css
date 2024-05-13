@@ -89,3 +89,24 @@ h3 {
     border: none;
 }
 
+.aval-button-div {
+    display: inline;
+    padding-left: 10px;
+}
+
+.select-button {
+    border-color: #222;
+    border: solid;
+}
+
+
+.aval-button-div button {
+    border-color: #222;
+    border: solid;
+}
+
+.check-div {
+    display: flex;
+    align-items: center;
+}
+

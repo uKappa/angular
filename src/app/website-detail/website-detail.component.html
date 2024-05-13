@@ -37,7 +37,7 @@
         <button mat-button class="invis-button"></button>
       </li>
       <li *ngFor="let url of website.urls" class="url-item">
-        <div *ngIf="mostrarChecks">
+        <div *ngIf="mostrarChecks" class="check-div">
           <input type="checkbox" (change)="toggleSelection(url)">
       </div>
         <span>{{ url?.link }}</span>

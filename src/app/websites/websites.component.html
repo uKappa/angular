@@ -17,10 +17,10 @@
         <span>Data Registo</span>
         <span>Última Avaliação</span>
         <span>Estado</span>
-        <button mat-button class="invis-buttton"></button>
+        <button mat-button class="invis-button"></button>
     </li>
     <li *ngFor="let website of websites" class="website-item">
-        <div *ngIf="mostrarChecks">
+        <div *ngIf="mostrarChecks" class="check-div">
             <input type="checkbox" (change)="toggleSelection(website)">
         </div>
             <span tabindex="0"><a (click)="onSelected(website)" class="website-link">{{ website?.url?.link }}</a></span>
@@ -36,7 +36,7 @@
 
 <div class="aval-section">
     <button mat-button class="select-button" (click)="mostrarCheckboxes()">Selecionar Sites</button>
-    <div *ngIf="mostrarChecks">
+    <div *ngIf="mostrarChecks" class="aval-button-div">
     <button mat-button (click)="iniciarAvaliacao(selectedWebsites)">Iniciar Avaliação</button>
 </div>
 </div>
