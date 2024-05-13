@@ -89,6 +89,11 @@ h3 {
     border: none;
 }
 
+.url-list li:nth-child(2) .delete {
+    visibility: hidden;
+}
+
+
 .aval-button-div {
     display: inline;
     padding-left: 10px;
