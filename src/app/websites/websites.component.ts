@@ -126,5 +126,7 @@ export class WebsitesComponent {
       website.estado = Estado.EmAvaliacao
     }
     this.websiteService.iniciarAvaliacao(this.selectedWebsites).subscribe(x => this.websites = x);
+
+    
   }
 }
