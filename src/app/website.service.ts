@@ -72,8 +72,8 @@ export class WebsiteService {
     return this.http.put<Url[]>(`${this.httpURL}/website/evaluate_url`, selectedUrls, this.httpOptions).pipe()
   }
 
-  deletePagina(_id: Object): Observable<Url> {
-    return this.http.delete<Url>(`${this.httpURL}/pagina/delete/${_id}`, this.httpOptions)
+  deletePagina(url: Url): Observable<Url> {
+    return this.http.delete<Url>(`${this.httpURL}/pagina/delete/${url._id}`, this.httpOptions)
   }
   
 }

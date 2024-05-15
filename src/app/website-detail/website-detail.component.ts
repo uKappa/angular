@@ -240,12 +240,7 @@ export class WebsiteDetailComponent {
 
 
   delete(url: Url): void {
-    if (url._id && this.website) {
-      console.log("entrei")
-      this.websiteService.deletePagina(url._id).subscribe();
-      this.website.urls = this.website.urls.filter(u => u._id !== url._id);
-    }
-    console.log("lá fora")
+    this.websiteService.deletePagina(url).subscribe();
   }
 
   toggleSelection(url: Url): void {
