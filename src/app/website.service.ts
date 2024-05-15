@@ -11,7 +11,7 @@ import { Repo } from './repo';
 })
 export class WebsiteService {
 
-  httpURL = "http://localhost:3058/catalog"
+  httpURL = "http://10.101.151.25/:3058/catalog"
   //httpURL = "http://localhost:3000/catalog"
 
   httpOptions = {
