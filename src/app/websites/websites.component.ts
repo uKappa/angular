@@ -97,10 +97,12 @@ export class WebsitesComponent {
       if (confirm('Este website tem páginas associadas. Tem certeza de que deseja excluí-lo?')) {
         this.websites = this.websites.filter(h => h !== website);
         this.websiteService.deleteWebsite(website._id).subscribe();
+        this.selectedWebsite = undefined;
       }
     } else {
       this.websites = this.websites.filter(h => h !== website);
       this.websiteService.deleteWebsite(website._id).subscribe();
+      this.selectedWebsite = undefined;
     }
   }  
 
