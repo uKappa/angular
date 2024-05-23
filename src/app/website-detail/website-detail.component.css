@@ -110,3 +110,7 @@ h3 {
     align-items: center;
 }
 
+.url-list li:nth-child(2) .delete {
+    visibility: hidden;
+}
+
