@@ -97,104 +97,139 @@ export class WebsiteDetailComponent {
   }
 
   getNoErrorPag() {
-    //console.log(this.reports)
-    for (const report of this.reports) {
-      var passed = 0;
-      var warning = 0;
-      var failed = 0;
-      var inapplicable = 0;
-      console.log(report)
-      for (const rule of report.rules) {
-        passed = passed + rule.passed
-        warning = warning + rule.warning
-        failed = failed + rule.failed
-        inapplicable = inapplicable + rule.inapplicable
-      }
-      if (warning == 0 && failed == 0 && inapplicable == 0) {
-        this.noErrorPage += 1
-        return
+    console.log(this.website!.urls)
+    let count = -1;
+    for (const url of this.website!.urls) {
+      if (url.errorA === -1 && url.errorAA === -1 && url.errorAAA === -1) {
+        this.noErrorPage += 1;
       }
     }
+    //console.log(this.reports)
+    //for (const report of this.reports) {
+      //if (report.errorA || report.errorAA || report.errorAAA) {
+      //  
+      //}
+      //
+      //var passed = 0;
+      //var warning = 0;
+      //var failed = 0;
+      //var inapplicable = 0;
+      //console.log(report)
+      //for (const rule of report.rules) {
+      //  passed = passed + rule.passed
+      //  warning = warning + rule.warning
+      //  failed = failed + rule.failed
+      //  inapplicable = inapplicable + rule.inapplicable
+      //}
+      //if (warning == 0 && failed == 0 && inapplicable == 0) {
+      //  this.noErrorPage += 1
+      //  return
+      //}
+    //}
   }
 
   getAtLeastOneErrorPag() {
-    for (const report of this.reports) {
-      var passed = 0;
-      var warning = 0;
-      var failed = 0;
-      var inapplicable = 0;
-      for (const rule of report.rules) {
-        passed = passed + rule.passed
-        warning = warning + rule.warning
-        failed = failed + rule.failed
-        inapplicable = inapplicable + rule.inapplicable
-        console.log(rule);
-      }
-      if (warning != 0 || failed != 0 || inapplicable != 0) {
-        this.atLeastOneError += 1
-        return
+    let count = -1;
+    for (const url of this.website!.urls) {
+      if (url.errorA != -1 || url.errorAA != -1 || url.errorAAA != -1) {
+        this.atLeastOneError += 1;
       }
     }
+    //for (const report of this.reports) {
+    //  var passed = 0;
+    //  var warning = 0;
+    //  var failed = 0;
+    //  var inapplicable = 0;
+    //  for (const rule of report.rules) {
+    //    passed = passed + rule.passed
+    //    warning = warning + rule.warning
+    //    failed = failed + rule.failed
+    //    inapplicable = inapplicable + rule.inapplicable
+    //    console.log(rule);
+    //  }
+    //  if (warning != 0 || failed != 0 || inapplicable != 0) {
+    //    this.atLeastOneError += 1
+    //    return
+    //  }
+    //}
   }
 
   getAtLeastOneErrorPagA() {
-    for (const report of this.reports) {
-      var passed = 0;
-      var warning = 0;
-      var failed = 0;
-      var inapplicable = 0;
-      for (const rule of report.rules) {
-        passed = passed + rule.passed
-        warning = warning + rule.warning
-        failed = failed + rule.failed
-        inapplicable = inapplicable + rule.inapplicable
-        if (warning != 0 || failed != 0 || inapplicable != 0) {
-          rule.ruleLevel = "A"
-          this.atLeastOneErrorA += 1
-          return
-        }
+    let count = -1;
+    for (const url of this.website!.urls) {
+      if (url.errorA != -1) {
+        this.atLeastOneError += 1;
       }
     }
+    //for (const report of this.reports) {
+    //  var passed = 0;
+    //  var warning = 0;
+    //  var failed = 0;
+    //  var inapplicable = 0;
+    //  for (const rule of report.rules) {
+    //    passed = passed + rule.passed
+    //    warning = warning + rule.warning
+    //    failed = failed + rule.failed
+    //    inapplicable = inapplicable + rule.inapplicable
+    //    if (warning != 0 || failed != 0 || inapplicable != 0) {
+    //      rule.ruleLevel = "A"
+    //      this.atLeastOneErrorA += 1
+    //      return
+    //    }
+    //  }
+    //}
   }
 
   getAtLeastOneErrorPagAA() {
-    for (const report of this.reports) {
-      var passed = 0;
-      var warning = 0;
-      var failed = 0;
-      var inapplicable = 0;
-      for (const rule of report.rules) {
-        passed = passed + rule.passed
-        warning = warning + rule.warning
-        failed = failed + rule.failed
-        inapplicable = inapplicable + rule.inapplicable
-        if (warning != 0 || failed != 0 || inapplicable != 0) {
-          rule.ruleLevel = "AA"
-          this.atLeastOneErrorAA += 1
-          return
-        }
+    let count = -1;
+    for (const url of this.website!.urls) {
+      if (url.errorAA != -1) {
+        this.atLeastOneError += 1;
       }
     }
+    //for (const report of this.reports) {
+    //  var passed = 0;
+    //  var warning = 0;
+    //  var failed = 0;
+    //  var inapplicable = 0;
+    //  for (const rule of report.rules) {
+    //    passed = passed + rule.passed
+    //    warning = warning + rule.warning
+    //    failed = failed + rule.failed
+    //    inapplicable = inapplicable + rule.inapplicable
+    //    if (warning != 0 || failed != 0 || inapplicable != 0) {
+    //      rule.ruleLevel = "AA"
+    //      this.atLeastOneErrorAA += 1
+    //      return
+    //    }
+    //  }
+    //}
   }
 
   getAtLeastOneErrorPagAAA() {
-    for (const report of this.reports) {
-      var passed = 0;
-      var warning = 0;
-      var failed = 0;
-      var inapplicable = 0;
-      for (const rule of report.rules) {
-        passed = passed + rule.passed
-        warning = warning + rule.warning
-        failed = failed + rule.failed
-        inapplicable = inapplicable + rule.inapplicable
-        if (warning != 0 || failed != 0 || inapplicable != 0) {
-          rule.ruleLevel = "AAA"
-          this.atLeastOneErrorAAA += 1
-          return
-        }
+    let count = -1;
+    for (const url of this.website!.urls) {
+      if (url.errorAAA != -1) {
+        this.atLeastOneError += 1;
       }
     }
+    //for (const report of this.reports) {
+    //  var passed = 0;
+    //  var warning = 0;
+    //  var failed = 0;
+    //  var inapplicable = 0;
+    //  for (const rule of report.rules) {
+    //    passed = passed + rule.passed
+    //    warning = warning + rule.warning
+    //    failed = failed + rule.failed
+    //    inapplicable = inapplicable + rule.inapplicable
+    //    if (warning != 0 || failed != 0 || inapplicable != 0) {
+    //      rule.ruleLevel = "AAA"
+    //      this.atLeastOneErrorAAA += 1
+    //      return
+    //    }
+    //  }
+    //}
   }
 
 
@@ -220,7 +255,10 @@ export class WebsiteDetailComponent {
         var a: Url = {
           link: this.newUrl,
           estado: EstadoPag.Naoconforme,
-          ultima_aval: null
+          ultima_aval: null,
+          errorA: -1,
+          errorAA: -1,
+          errorAAA: -1
         }
 
         if (!this.website.urls) {
@@ -260,8 +298,8 @@ export class WebsiteDetailComponent {
     for (const url of this.selectedUrls) {
       url.estado = EstadoPag.EmAvaliacao
     }
-    this.websiteService.iniciarAvaliacaoUrl(this.selectedUrls).subscribe(x => this.selectedUrls = x);
-    this.websiteService.startInterval(() => {
+    this.websiteService.iniciarAvaliacaoUrl(this.selectedUrls).subscribe(x => this.selectedUrls=x/*this.website!.urls = x*/); //guardar e buscar estatisticas diretamente ao urls do website
+    this.websiteService.startInterval(() => {                                                                                  // ou seja mudar o componete url para guardar as estatisticas
       console.log('Intervalo iniciado em Component1');
       this.getReport();
     }, 15000);

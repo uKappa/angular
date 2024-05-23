@@ -5,5 +5,8 @@ export interface Url{
     _id?: Object,
     link: string,
     estado: EstadoPag,
-    ultima_aval: Date | null
+    ultima_aval: Date | null,
+    errorA: number,
+    errorAA: number,
+    errorAAA: number
 }

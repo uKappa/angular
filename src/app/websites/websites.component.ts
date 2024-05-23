@@ -80,7 +80,7 @@ export class WebsitesComponent {
   add(url: string): void {
     url = url.trim();
     if (!url) { return; }
-    const newUrl: Url = {link: url, estado: EstadoPag.PorAvaliar, ultima_aval: null};
+    const newUrl: Url = {link: url, estado: EstadoPag.PorAvaliar, ultima_aval: null, errorA: -1, errorAA: -1, errorAAA: -1};
 
     console.log(newUrl)
 
