@@ -26,6 +26,15 @@
         <span>Lista com os 10 erros de acessibilidade mais comuns no total de todas as páginas do website avaliadas:</span>
       </li>
     </ul>
+
+    <div class="detalhes-relatorio">
+
+      <button mat-button (click)="detalhesAval()">Ver detalhes</button>
+      <button mat-button (click)="gerarRelatorio()">Gerar ralatório</button>
+
+    </div>
+
+
   </div>
   <div *ngIf="website.urls && website.urls.length > 0" class="associated-urls">
     <h3>URLs associadas:</h3>

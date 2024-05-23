@@ -312,4 +312,68 @@ export class WebsiteDetailComponent {
     this.selectedUrls = [];
     this.mostrarChecks = !this.mostrarChecks;
   }
+
+  detalhesAval(): void {
+
+    //TODO
+
+  }
+
+  gerarRelatorio(): void {
+
+    const userChoice = confirm("Deseja gerar o relatório em PDF? Se cancelar, o relatório será gerado em HTML.");
+    if (userChoice) {
+        this.generatePDF();
+    } else {
+        const reportHTML = this.generateHTML();
+        this.downloadHTML(reportHTML);
+    }
+
+  }
+
+  downloadHTML(htmlContent: string): void {
+    const blob = new Blob([htmlContent], { type: 'text/html' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'relatorio_de_acessibilidade.html';
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
+generateHTML(): string {
+  return `
+  <html>
+  <head><title>Relatório de Acessibilidade</title></head>
+  <body>
+      <h1>Relatório de Acessibilidade</h1>
+      <ul>
+          <li>Total de páginas sem erros: <span>${this.noErrorPage} (${(this.noErrorPage / this.numberOfPages * 100).toFixed(2)}%)</span></li>
+          <li>Total e percentagem de páginas com pelo menos um erro de acessibilidade: <span>${this.atLeastOneError} (${(this.atLeastOneError / this.numberOfPages * 100).toFixed(2)}%)</span></li>
+          <li>Total e percentagem de páginas com pelo menos um erro de acessibilidade de nível A: <span>${this.atLeastOneErrorA} (${(this.atLeastOneErrorA / this.numberOfPages * 100).toFixed(2)}%)</span></li>
+          <li>Total e percentagem de páginas com pelo menos um erro de acessibilidade de nível AA: <span>${this.atLeastOneErrorAA} (${(this.atLeastOneErrorAA / this.numberOfPages * 100).toFixed(2)}%)</span></li>
+          <li>Total e percentagem de páginas com pelo menos um erro de acessibilidade de nível AAA: <span>${this.atLeastOneErrorAAA} (${(this.atLeastOneErrorAAA / this.numberOfPages * 100).toFixed(2)}%)</span></li>
+          <li>Lista com os 10 erros de acessibilidade mais comuns no total de todas as páginas do website avaliadas: <span></span></li>
+      </ul>
+      <p>Data: ${new Date().toLocaleDateString()}</p>
+  </body>
+  </html>`;
+}
+
+
+generatePDF(): void {
+  const { jsPDF } = window as any;
+  if (!jsPDF) {
+    console.error("jsPDF is not loaded correctly");
+    return;
+  }
+  const doc = new jsPDF();
+  const reportHTML = this.generateHTML();
+  doc.html(reportHTML, {
+      callback: function (doc: any) {
+          doc.save('relatorio_de_acessibilidade.pdf');
+      }
+  });
+}
+
 }
