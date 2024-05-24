@@ -40,19 +40,19 @@
     <ul class="url-list">
       <li  class="url-item">
         <div *ngIf="mostrarButao" class="but-div">
-          <button mat-button class="invis-button">mais detalhes</button>
+          <button mat-button class="invis-button"></button>
         </div>
         <span>Link</span>
         <span>Última Avaliação</span>
         <span>Estado da Página</span>
-        <button mat-button class="invis-button"></button> 
+        <button mat-button class="invis-button">+</button> 
       </li>
       <li *ngFor="let url of website.urls" class="url-item">
         <div *ngIf="mostrarChecks" class="check-div">
           <input type="checkbox" (change)="toggleSelection(url)">
       </div>
       <div *ngIf="mostrarButao" class="but-div">
-        <button mat-button type="button" (click)="showDetailsPagina(url)">mais detalhes</button>
+        <button mat-button type="button" (click)="showDetailsPagina(url)">+</button>
       </div>
         <span>{{ url?.link }}</span>
         <span>

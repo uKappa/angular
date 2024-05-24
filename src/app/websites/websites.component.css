@@ -1,3 +1,4 @@
+
 * {
     font-family: 'Roboto', sans-serif;
 }
@@ -6,80 +7,52 @@
     padding: 20px;
     margin: 10px;
     padding-bottom: 40px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: 500;
+    color: #424242;
+    margin-bottom: 20px;
 }
 
 .website-list {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 .website-list li {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 10px 0;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #E0E0E0;
 }
 
-.website-item .website-link {
-    display: flex;
-    justify-content: space-between;
-}
-
-.website-list li:first-child {
+.website-item:first-child {
     font-weight: bold;
-}
-
-.website-list li:last-child {
-    border-bottom: none;
-}
-
-.website-list span {
-    flex: 1;
-    padding: 0 10px;
-}
-
-.input-container {
-    margin-bottom: 20px;
-}
-
-.url-input {
-    width: 300px;
-    padding: 5px;
-}
-
-.add-button {
-    background-color: #2196F3;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.add-button:hover {
-    background-color: #0056b3;
-}
-
-.associated-urls {
-    margin-top: 20px;
-}
-
-.website-list {
-    list-style-type: none;
-    padding: 0;
-}
-
-.website-item {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-}
-
-.website-item:first-child span{
     margin-bottom: 10px;
 }
 
 .website-item span {
     flex: 1;
+    padding: 0 10px;
+    color: #616161;
+    font-size: 14px;
+}
+
+.website-item .website-link {
+    color: inherit; 
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.website-item .website-link:hover {
+    font-weight: bold;
 }
 
 .invis-button {
@@ -87,67 +60,104 @@
 }
 
 .options-container {
-    display: grid;
-    grid-template-columns: 1fr 9fr;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .options-container label {
     padding-right: 15px;
     min-width: 100px;
+    color: #424242;
 }
 
-.aval-section {
-    display: block;
-    padding-bottom: 20px;
-}
-
-.aval-section button {
-    display: inline;
+.options-container mat-select {
+    min-width: 200px;
 }
 
 .input-container {
-    padding-top: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
-.init-button {
-    display: inline;
-    margin-left: 10px;
+.url-input {
+    width: 100%;
+    max-width: 400px;
+    padding: 8px;
+    border: 1px solid #BDBDBD;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
 }
 
-.aval-button-div {
-    display: inline;
-    padding-left: 10px;
+.add-button {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
 }
 
-.select-button {
-    border-color: #222;
-    border: solid;
-}
-
-.aval-button-div button {
-    border-color: #222;
-    border: solid;
-}
-
-.goback {
-    border-color: #222;
-    border: solid;
+.add-button:hover {
+    background-color: #1976D2;
 }
 
 .delete {
     background-color: #F44336;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .delete:hover {
     background-color: #D32F2F;
 }
 
-.website-item span {
+.check-div {
     display: flex;
     align-items: center;
 }
 
-.check-div {
-    display: flex;
-    align-items: center;
+.aval-section {
+    margin-bottom: 15px;
+}
+
+.aval-section button {
+    border: 1px solid #222;
+    background-color: #ffffff;
+    color: #222;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.aval-section button:hover {
+    background-color: #222;
+    color: #ffffff;
+}
+
+.goback {
+    border: 1px solid #222;
+    background-color: #ffffff;
+    color: #222;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 10px;
+}
+
+.goback:hover {
+    background-color: #222;
+    color: #ffffff;
 }

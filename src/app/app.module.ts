@@ -26,7 +26,7 @@ import { WebsiteAcessibilidadeComponent } from './website-acessibilidade/website
     HttpClientModule,
     MatSelectModule,
     MatButtonModule,
-    MatCheckboxModule
+    MatCheckboxModule,
   ],
   providers: [
     provideClientHydration(),

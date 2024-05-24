@@ -1,15 +1,21 @@
+
 * {
     font-family: 'Roboto', sans-serif;
 }
 
 .website-details {
     margin: 20px;
-    padding-top: 50px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .website-title {
     font-size: 24px;
-    margin-bottom: 10px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #424242;
 }
 
 .input-container {
@@ -17,46 +23,61 @@
 }
 
 .url-input {
-    width: 300px;
-    padding: 5px;
+    width: 100%;
+    max-width: 400px;
+    padding: 8px;
+    border: 1px solid #BDBDBD;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
 }
 
 .add-button {
     background-color: #2196F3;
+    color: white;
     border: none;
-    padding: 8px 16px;
+    padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
     margin-top: 10px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
 }
 
 .add-button:hover {
-    background-color: #0056b3;
+    background-color: #1976D2;
 }
 
 .associated-urls {
-    margin-top: 20px;
-    padding-top: 15px;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #E0E0E0;
 }
 
 .url-list {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 .url-item {
     display: flex;
     justify-content: space-between;
-    
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #E0E0E0;
+}
+
+.url-item:first-child {
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .url-item span {
     flex: 1;
-}
-
-.url-item:first-child span {
-  margin-bottom: 5px;
-  font-weight: bold;
+    padding: 0 10px;
+    color: #616161;
+    font-size: 14px;
 }
 
 .invis-button {
@@ -64,57 +85,50 @@
 }
 
 h3 {
-    padding-bottom: 15px;
+    font-size: 20px;
+    font-weight: 500;
+    color: #424242;
+    margin-bottom: 20px;
 }
 
 .delete {
     background-color: #F44336;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .delete:hover {
     background-color: #D32F2F;
 }
 
-.url-item span {
-    display: flex;
-    align-items: center;
-}
-
-.url-list li {
-    border-bottom: 1px solid #ccc;
-    padding: 10px 0;
-}
-
-.url-list li:last-child {
-    border: none;
-}
-
-.aval-button-div {
-    display: inline;
-    padding-left: 10px;
-}
-
+.aval-button-div,
 .detalhes-relatorio {
-    display: inline;
+    display: inline-block;
     padding-left: 10px;
-    
 }
 
-.detalhes-relatorio button {
-    border-color: #222;
-    border: solid;
-    margin-right: 10px;
-}
-
+.detalhes-relatorio button,
+.aval-button-div button,
 .select-button {
-    border-color: #222;
-    border: solid;
+    border: 1px solid #222;
+    background-color: #ffffff;
+    color: #222;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-
-.aval-button-div button {
-    border-color: #222;
-    border: solid;
+.detalhes-relatorio button:hover,
+.aval-button-div button:hover,
+.select-button:hover {
+    background-color: #222;
+    color: #ffffff;
 }
 
 .check-div {
@@ -127,20 +141,22 @@ h3 {
 }
 
 .aval-section {
+    margin-top: 15px;
     margin-bottom: 15px;
 }
 
-.but.div button {
+.but-div button {
     background-color: #2196F3;
+    color: white;
     border: none;
     padding: 8px 16px;
     border-radius: 4px;
     cursor: pointer;
     margin-top: 10px;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
 }
 
-.but.div button:hover {
-    background-color: #0056b3;
+.but-div button:hover {
+    background-color: #1976D2;
 }
-
-
