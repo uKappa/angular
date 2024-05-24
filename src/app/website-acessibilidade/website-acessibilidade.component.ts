@@ -67,9 +67,9 @@ export class WebsiteAcessibilidadeComponent {
     if(this.filteredRules){
       if (this.filterOption == 'tipo') {
         if (this.testType == 'regra'){
-          this.filteredRules = this.filteredRules.filter(rule => rule.ruleType === "WCAG");
-        }else {
           this.filteredRules = this.filteredRules.filter(rule => rule.ruleType === "ACT");
+        }else {
+          this.filteredRules = this.filteredRules.filter(rule => rule.ruleType === "WCAG");
         }
       }
 
