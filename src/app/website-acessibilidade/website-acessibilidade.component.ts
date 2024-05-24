@@ -13,7 +13,7 @@ export class WebsiteAcessibilidadeComponent {
   @Input() selectedUrlPagina?: Url;
 
   rules?: Rule[]
-  filteredRules?: any[] = [];
+  filteredRules?: Rule[] = [];
 
   passed = 0
   warned = 0
@@ -60,12 +60,12 @@ export class WebsiteAcessibilidadeComponent {
 
     if (this.rules) 
       
-    console.log("Filtered Rules:", this.filteredRules);
     console.log(this.rules);
     this.filteredRules = this.rules;
 
     if(this.filteredRules){
       if (this.filterOption == 'tipo') {
+        console.log('tipo')
         if (this.testType == 'regra'){
           this.filteredRules = this.filteredRules.filter(rule => rule.ruleType === "ACT");
         }else {
@@ -74,31 +74,34 @@ export class WebsiteAcessibilidadeComponent {
       }
 
       if (this.filterOption == 'conformidade') {
-        if (this.testType == 'A'){
-          this.filteredRules = this.filteredRules.filter(rule => rule.ruleType === "A");
-        }if (this.testType == 'AA'){
-          this.filteredRules = this.filteredRules.filter(rule => rule.ruleType === "AA");
-        }if (this.testType == 'AAA'){
-          this.filteredRules = this.filteredRules.filter(rule => rule.ruleType === "AAA");
+        console.log('conformidade')
+        if (this.complianceLevel == 'A'){
+          this.filteredRules = this.filteredRules.filter(rule => rule.ruleLevel === "A");
+        }if (this.complianceLevel == 'AA'){
+          this.filteredRules = this.filteredRules.filter(rule => rule.ruleLevel === "AA");
+        }if (this.complianceLevel == 'AAA'){
+          this.filteredRules = this.filteredRules.filter(rule => rule.ruleLevel === "AAA");
         }else {
-          this.filteredRules = this.filteredRules.filter(rule => rule.ruleType === "");
+          this.filteredRules = this.filteredRules.filter(rule => rule.ruleLevel === "");
         }
       }
 
       if (this.filterOption == 'resultado') {
-        if (this.testType == 'passado'){
-          this.filteredRules = this.filteredRules.filter(rule => rule.ruleType === "passed");
-        }if (this.testType == 'aviso'){
-          this.filteredRules = this.filteredRules.filter(rule => rule.ruleType === "warning");
-        }if (this.testType == 'falhado'){
-          this.filteredRules = this.filteredRules.filter(rule => rule.ruleType === "failed");
-        }else {
-          this.filteredRules = this.filteredRules.filter(rule => rule.ruleType === "inapplicable");
+        console.log('resultado')
+        console.log(this.testResult)
+        if (this.testResult == 'passado'){
+          this.filteredRules = this.filteredRules.filter(rule => rule.passed != 0 && rule.warning === 0 && rule.failed === 0 && rule.inapplicable === 0);
+        }if (this.testResult == 'aviso'){
+          this.filteredRules = this.filteredRules.filter(rule => rule.warning != 0 && rule.failed === 0 && rule.inapplicable === 0);
+        }if (this.testResult == 'falhado'){
+          this.filteredRules = this.filteredRules.filter(rule => rule.failed != 0 && rule.inapplicable === 0);
+        }if (this.testResult == 'nao_aplicavel'){
+          this.filteredRules = this.filteredRules.filter(rule => rule.inapplicable != 0);
         }
       }
 
     }
-    
+    console.log("Filtered Rules:", this.filteredRules);
   }
 
 }
