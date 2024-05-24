@@ -98,8 +98,6 @@ export class WebsiteAcessibilidadeComponent {
       }
 
     }
-
-    
     
   }
 
