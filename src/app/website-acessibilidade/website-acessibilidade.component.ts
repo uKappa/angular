@@ -52,7 +52,7 @@ export class WebsiteAcessibilidadeComponent {
   }
 
   getRules() {
-    this.websiteService.getRules(this.selectedUrlPagina!.repo[0]).subscribe(x => this.rules = x)
+    this.websiteService.getRules(this.selectedUrlPagina!.repo[0]).subscribe(x => {this.rules = x, this.filteredRules = this.rules;})
   }
 
 
