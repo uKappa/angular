@@ -126,3 +126,21 @@ h3 {
     visibility: hidden;
 }
 
+.aval-section {
+    margin-bottom: 15px;
+}
+
+.but.div button {
+    background-color: #2196F3;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.but.div button:hover {
+    background-color: #0056b3;
+}
+
+

@@ -41,7 +41,11 @@ export class WebsiteDetailComponent {
 
   selectedUrls: Url[] = [];
 
+  selectedUrlPagina?: Url;
+
   mostrarChecks: boolean = false;
+  mostrarButao: boolean = false;
+  mostrarSelectedPagina = false;
 
   //datatimelimit: Subscription | undefined;
 
@@ -49,6 +53,9 @@ export class WebsiteDetailComponent {
 
   ngOnInit(): void {
     this.getWebsite();
+
+    this.mostrarSelectedPagina = false;
+
     //this.datatimelimit = interval(5000)
     //try {
     //  this.datatimelimit=interval(5000).subscribe(response => {
@@ -292,6 +299,16 @@ export class WebsiteDetailComponent {
     console.log(this.selectedUrls);
   }
 
+  
+  
+
+  showDetailsPagina(url: Url): void{
+    this.selectedUrlPagina = url;
+  }
+
+
+
+
   iniciarAvaliacao(selectedUrls: Url[]): void {
     this.selectedUrls = this.selectedUrls.filter(url => url.estado === "PorAvaliar");
     for (const url of this.selectedUrls) {
@@ -319,14 +336,16 @@ export class WebsiteDetailComponent {
   }
 
   mostrarCheckboxes() {
+    this.mostrarButao = false;
     this.selectedUrls = [];
     this.mostrarChecks = !this.mostrarChecks;
+    this.mostrarSelectedPagina = false;
   }
 
   detalhesAval(): void {
-
-    //TODO
-
+    this.mostrarChecks = false;
+    this.mostrarButao = !this.mostrarButao;
+    this.mostrarSelectedPagina = !this.mostrarSelectedPagina;
   }
 
   gerarRelatorio(): void {

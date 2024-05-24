@@ -29,7 +29,6 @@
 
     <div class="detalhes-relatorio">
 
-      <button mat-button (click)="detalhesAval()">Ver detalhes</button>
       <button mat-button (click)="gerarRelatorio()">Gerar ralatório</button>
 
     </div>
@@ -40,14 +39,20 @@
     <h3>URLs associadas:</h3>
     <ul class="url-list">
       <li  class="url-item">
+        <div *ngIf="mostrarButao" class="but-div">
+          <button mat-button class="invis-button">mais detalhes</button>
+        </div>
         <span>Link</span>
         <span>Última Avaliação</span>
         <span>Estado da Página</span>
-        <button mat-button class="invis-button"></button>
+        <button mat-button class="invis-button"></button> 
       </li>
       <li *ngFor="let url of website.urls" class="url-item">
         <div *ngIf="mostrarChecks" class="check-div">
           <input type="checkbox" (change)="toggleSelection(url)">
+      </div>
+      <div *ngIf="mostrarButao" class="but-div">
+        <button mat-button type="button" (click)="showDetailsPagina(url)">mais detalhes</button>
       </div>
         <span>{{ url?.link }}</span>
         <span>
@@ -62,8 +67,17 @@
   <div class="aval-section">
     <button mat-button class="select-button" (click)="mostrarCheckboxes()">Selecionar Sites</button>
     <div *ngIf="mostrarChecks" class="aval-button-div">
-    <button mat-button (click)="iniciarAvaliacao(selectedUrls)">Iniciar Avaliação</button>
+      <button mat-button (click)="iniciarAvaliacao(selectedUrls)">Iniciar Avaliação</button>
+    </div>
 </div>
+
+<div class="aval-section">
+  <button mat-button class="select-button" (click)="detalhesAval()">Ver detalhes</button>
+</div>
+
+<div *ngIf="selectedUrlPagina && mostrarSelectedPagina" class="pagina-details">
+  <h3>{{selectedUrlPagina?.link}}</h3>
+  <p>detalhes</p>
 </div>
 
   
