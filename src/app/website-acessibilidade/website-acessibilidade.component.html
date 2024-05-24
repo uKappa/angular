@@ -18,7 +18,7 @@
   
     <div class="filter-container">
         <label for="filter-option">Filtrar por:</label>
-        <mat-select id="filter-option" [(ngModel)]="filterOption" (change)="applyFilter()">
+        <mat-select id="filter-option" [(ngModel)]="filterOption" (selectionChange)="applyFilter()">
             <mat-option value="tipo">Tipo de Teste</mat-option>
             <mat-option value="conformidade">Conformidade</mat-option>
             <mat-option value="resultado">Resultado</mat-option>
@@ -27,7 +27,7 @@
     
     <div *ngIf="filterOption === 'tipo'" class="sub-filter-container">
         <label for="test-type">Tipo de Teste:</label>
-        <mat-select id="test-type" [(ngModel)]="testType" (change)="applyFilter()">
+        <mat-select id="test-type" [(ngModel)]="testType" (selectionChange)="applyFilter()">
             <mat-option value="regra">Regra ACT</mat-option>
             <mat-option value="tecnica">Técnica WCAG</mat-option>
         </mat-select>
@@ -35,7 +35,7 @@
     
     <div *ngIf="filterOption === 'conformidade'" class="sub-filter-container">
         <label for="compliance-level">Nível de Conformidade:</label>
-        <mat-select id="compliance-level" [(ngModel)]="complianceLevel" (change)="applyFilter()">
+        <mat-select id="compliance-level" [(ngModel)]="complianceLevel" (selectionChange)="applyFilter()">
             <mat-option value="A">A</mat-option>
             <mat-option value="AA">AA</mat-option>
             <mat-option value="AAA">AAA</mat-option>
@@ -45,7 +45,7 @@
     
     <div *ngIf="filterOption === 'resultado'" class="sub-filter-container">
         <label for="test-result">Resultado do Teste:</label>
-        <mat-select id="test-result" [(ngModel)]="testResult" (change)="applyFilter()">
+        <mat-select id="test-result" [(ngModel)]="testResult" (selectionChange)="applyFilter()">
             <mat-option value="passado">Passado</mat-option>
             <mat-option value="aviso">Aviso</mat-option>
             <mat-option value="falhado">Falhado</mat-option>
@@ -58,7 +58,7 @@
     <div class="rules-list-container">
         
         <ul class="rules-list">
-            <li *ngFor="let rule of rules" class="rule-item">
+            <li *ngFor="let rule of filteredRules" class="rule-item">
                 <span class="rule-name">{{rule.ruleName}}</span>
                 <span class="rule-failed">{{rule.failed}}</span>
                 <span class="rule-outcome">{{rule.outcome}}</span>

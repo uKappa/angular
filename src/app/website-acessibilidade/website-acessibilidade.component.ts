@@ -60,7 +60,7 @@ export class WebsiteAcessibilidadeComponent {
 
     if (this.rules) 
       
-    
+    console.log("Filtered Rules:", this.filteredRules);
     console.log(this.rules);
     this.filteredRules = this.rules;
 
