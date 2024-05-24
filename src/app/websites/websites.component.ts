@@ -73,14 +73,23 @@ export class WebsitesComponent {
 
   goBack() {
     this.selectedWebsite = undefined;
-    this.websiteService.stopInterval();
   }
   
 
   add(url: string): void {
     url = url.trim();
     if (!url) { return; }
-    const newUrl: Url = {link: url, estado: EstadoPag.PorAvaliar, ultima_aval: null, errorA: -1, errorAA: -1, errorAAA: -1};
+    const newUrl: Url = {link: url,
+      estado: EstadoPag.PorAvaliar,
+      ultima_aval: null,
+      errorA: false,
+      errorAA: false,
+      errorAAA: false,
+      nTestesPassados: -1,
+      nTestesAvisos: -1,
+      nTestesFalhos: -1,
+      repos: []
+    };
 
     console.log(newUrl)
 

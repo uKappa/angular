@@ -22,20 +22,6 @@ export class WebsiteService {
 
   constructor(private http: HttpClient) { }
 
-  startInterval(callback: () => void, intervalTime: number) {
-    if (!this.intervalSubscription) {
-      this.intervalSubscription = interval(intervalTime).subscribe(() => {
-        callback();
-      });
-    }
-  }
-
-  stopInterval() {
-    if (this.intervalSubscription) {
-      this.intervalSubscription.unsubscribe();
-      this.intervalSubscription = undefined;
-    }
-  }
 
   getWebsite(_id: Object): Observable<Website> {
     const url = `${this.httpURL}/website/${_id}`;

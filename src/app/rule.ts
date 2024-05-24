@@ -5,5 +5,6 @@ export interface Rule {
     warning: number,
     failed: number,
     inapplicable: number
-    outcome: string
+    outcome: string,
+    ruleType: string
 }

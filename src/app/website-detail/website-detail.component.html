@@ -51,7 +51,7 @@
       </div>
         <span>{{ url?.link }}</span>
         <span>
-          {{ website?.url?.ultima_aval ? (website.url.ultima_aval | date: 'dd/MM/yyyy') : 'não foi avaliado' }}
+          {{ url?.ultima_aval ? (url.ultima_aval | date: 'dd/MM/yyyy') : 'não foi avaliado' }}
         </span>
         <span>{{ url?.estado }}</span>
 

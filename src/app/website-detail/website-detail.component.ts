@@ -8,7 +8,6 @@ import { EstadoPag } from '../estadoPag';
 import { Estado } from '../estado';
 import { Rule } from '../rule';
 import { Repo } from '../repo';
-import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-website-detail',
@@ -77,14 +76,7 @@ export class WebsiteDetailComponent {
             this.reports.push(repo);
           }
         },
-        (error) => {
-        if (error.status === 200) {
-          console.log("stopInterval")
-          this.websiteService.stopInterval();
-        }
-        console.log('Dados recebidos:', error);
-      });
-    }
+    )}
     if (this.temp == 0) {
       console.log(this.reports);
       this.getNoErrorPag()
@@ -100,7 +92,7 @@ export class WebsiteDetailComponent {
     console.log(this.website!.urls)
     let count = -1;
     for (const url of this.website!.urls) {
-      if (url.errorA === -1 && url.errorAA === -1 && url.errorAAA === -1) {
+      if (!url.errorA && !url.errorAA && !url.errorAAA) {
         this.noErrorPage += 1;
       }
     }
@@ -131,7 +123,7 @@ export class WebsiteDetailComponent {
   getAtLeastOneErrorPag() {
     let count = -1;
     for (const url of this.website!.urls) {
-      if (url.errorA != -1 || url.errorAA != -1 || url.errorAAA != -1) {
+      if (url.errorA || url.errorAA || url.errorAAA) {
         this.atLeastOneError += 1;
       }
     }
@@ -157,7 +149,7 @@ export class WebsiteDetailComponent {
   getAtLeastOneErrorPagA() {
     let count = -1;
     for (const url of this.website!.urls) {
-      if (url.errorA != -1) {
+      if (url.errorA) {
         this.atLeastOneError += 1;
       }
     }
@@ -183,7 +175,7 @@ export class WebsiteDetailComponent {
   getAtLeastOneErrorPagAA() {
     let count = -1;
     for (const url of this.website!.urls) {
-      if (url.errorAA != -1) {
+      if (url.errorAA) {
         this.atLeastOneError += 1;
       }
     }
@@ -209,7 +201,7 @@ export class WebsiteDetailComponent {
   getAtLeastOneErrorPagAAA() {
     let count = -1;
     for (const url of this.website!.urls) {
-      if (url.errorAAA != -1) {
+      if (url.errorAAA) {
         this.atLeastOneError += 1;
       }
     }
@@ -254,11 +246,15 @@ export class WebsiteDetailComponent {
         }
         var a: Url = {
           link: this.newUrl,
-          estado: EstadoPag.Naoconforme,
+          estado: EstadoPag.PorAvaliar,
           ultima_aval: null,
-          errorA: -1,
-          errorAA: -1,
-          errorAAA: -1
+          errorA: false,
+          errorAA: false,
+          errorAAA: false,
+          nTestesPassados: -1,
+          nTestesAvisos: -1,
+          nTestesFalhos: -1,
+          repos: []
         }
 
         if (!this.website.urls) {
@@ -301,11 +297,25 @@ export class WebsiteDetailComponent {
     for (const url of this.selectedUrls) {
       url.estado = EstadoPag.EmAvaliacao
     }
-    this.websiteService.iniciarAvaliacaoUrl(this.selectedUrls).subscribe(x => this.selectedUrls=x/*this.website!.urls = x*/); //guardar e buscar estatisticas diretamente ao urls do website
-    this.websiteService.startInterval(() => {                                                                                  // ou seja mudar o componete url para guardar as estatisticas
-      console.log('Intervalo iniciado em Component1');
-      this.getReport();
-    }, 15000);
+    this.websiteService.iniciarAvaliacaoUrl(this.selectedUrls).subscribe(x =>
+      x.forEach(newUrl => {
+        console.log(newUrl);
+        for (let index = 0; index < this.website!.urls.length; index++) {
+          if (this.website!.urls[index].link === newUrl.link) {
+            this.website!.urls[index] = newUrl
+          }
+        }
+      },
+      this.getReport()
+    )); //guardar e buscar estatisticas diretamente ao urls do website
+    //this.selectedUrls.forEach(newUrl => {
+    //  for (let index = 0; index < this.website!.urls.length; index++) {
+    //    if (this.website!.urls[index].link === newUrl.link) {
+    //      this.website!.urls[index] =newUrl
+    //    }
+    //    
+    //  }
+    //});
   }
 
   mostrarCheckboxes() {

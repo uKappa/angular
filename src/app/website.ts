@@ -12,6 +12,9 @@ export interface Website {
       }*/
     estado: Estado,
     data_registo: Date,
-    urls: Url[]
+    urls: Url[],
+    pagErrorA: number,
+    pagErrorAA: number,
+    pagErrorAAA: number,
     //data registo, data ultima avaliacao, talvez lista de urls especificos do site
 }
