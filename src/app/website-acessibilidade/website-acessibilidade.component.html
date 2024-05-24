@@ -1,7 +1,28 @@
-<h3>{{selectedUrlPagina?.link}}</h3>
+<div *ngIf="selectedUrlPagina" class="website-acess">
+    <h3>{{selectedUrlPagina!.link}}</h3>
 
-<p>website-acessibilidade works!</p>
+    <ul>
+        <li>Total e percentagem de testes passados
+            <span>{{passed}} ({{passed / total! * 100}}%)</span>
+        </li>
+        <li>Total e percentagem de testes com aviso
+            <span>{{warned}} ({{warned / total * 100}}%)</span>
+        </li>
+        <li>Total e percentagem de testes falhados
+            <span>{{failed}} ({{failed / total * 100}}%)</span>
+        </li>
+        <li>Total e percentagem de testes não aplicáveis
+            <span>{{inaplicable}} ({{inaplicable / total * 100}}%)</span>
+        </li>
+    </ul>
 
+    <ul>
+        <li *ngFor="let rule of rules" class="rule-item">
+            <span>{{rule.failed}}</span>
+        </li>
+    </ul>
+
+</div>
 
 
 

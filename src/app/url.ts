@@ -13,5 +13,6 @@ export interface Url{
     nTestesPassados: number,
     nTestesAvisos: number,
     nTestesFalhos: number,
-    repos: Repo[]
+    nTestesInaplicaveis: number,
+    repo: Repo[]
 }

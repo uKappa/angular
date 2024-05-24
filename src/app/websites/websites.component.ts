@@ -88,7 +88,8 @@ export class WebsitesComponent {
       nTestesPassados: -1,
       nTestesAvisos: -1,
       nTestesFalhos: -1,
-      repos: []
+      nTestesInaplicaveis: -1,
+      repo: []
     };
 
     console.log(newUrl)

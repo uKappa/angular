@@ -2,11 +2,8 @@ import { Component, Input } from '@angular/core';
 import { Website } from '../website';
 import { WebsiteService } from '../website.service';
 import { ActivatedRoute } from '@angular/router';
-import { link } from 'fs';
 import { Url } from '../url';
 import { EstadoPag } from '../estadoPag';
-import { Estado } from '../estado';
-import { Rule } from '../rule';
 import { Repo } from '../repo';
 
 @Component({
@@ -28,7 +25,7 @@ export class WebsiteDetailComponent {
 
   //urls?: Url[] = this.website?.urls;
 
-  numberOfPages = 1;
+  numberOfPages = 0;
   noErrorPage = 0;
   atLeastOneError = 0;
   atLeastOneErrorA = 0;
@@ -55,6 +52,7 @@ export class WebsiteDetailComponent {
     this.mostrarSelectedPagina = false;
 
     this.getReport();
+    this.numberOfPages = this.website?.urls.filter(url => url.estado != EstadoPag.PorAvaliar).length!
     //this.datatimelimit = interval(5000)
     //try {
     //  this.datatimelimit=interval(5000).subscribe(response => {
@@ -75,6 +73,7 @@ export class WebsiteDetailComponent {
 
   getReport() {
     //console.log(this.website!.urls);
+    console.log(this.website?.urls.filter(url => url.estado != EstadoPag.PorAvaliar).length);
     this.getNoErrorPag()
     this.getAtLeastOneErrorPag()
     this.getAtLeastOneErrorPagA()
@@ -250,7 +249,8 @@ export class WebsiteDetailComponent {
           nTestesPassados: -1,
           nTestesAvisos: -1,
           nTestesFalhos: -1,
-          repos: []
+          nTestesInaplicaveis: -1,
+          repo: []
         }
 
         if (!this.website.urls) {
@@ -292,7 +292,7 @@ export class WebsiteDetailComponent {
   
 
   showDetailsPagina(url: Url): void{
-    this.selectedUrlPagina = url;
+    this.selectedUrlPagina! = url;
   }
 
 
@@ -361,11 +361,11 @@ generateHTML(): string {
   <body>
       <h1>Relatório de Acessibilidade</h1>
       <ul>
-          <li>Total de páginas sem erros: <span>${this.noErrorPage} (${(this.noErrorPage / this.numberOfPages * 100).toFixed(2)}%)</span></li>
-          <li>Total e percentagem de páginas com pelo menos um erro de acessibilidade: <span>${this.atLeastOneError} (${(this.atLeastOneError / this.numberOfPages * 100).toFixed(2)}%)</span></li>
-          <li>Total e percentagem de páginas com pelo menos um erro de acessibilidade de nível A: <span>${this.atLeastOneErrorA} (${(this.atLeastOneErrorA / this.numberOfPages * 100).toFixed(2)}%)</span></li>
-          <li>Total e percentagem de páginas com pelo menos um erro de acessibilidade de nível AA: <span>${this.atLeastOneErrorAA} (${(this.atLeastOneErrorAA / this.numberOfPages * 100).toFixed(2)}%)</span></li>
-          <li>Total e percentagem de páginas com pelo menos um erro de acessibilidade de nível AAA: <span>${this.atLeastOneErrorAAA} (${(this.atLeastOneErrorAAA / this.numberOfPages * 100).toFixed(2)}%)</span></li>
+          <li>Total de páginas sem erros: <span>${this.noErrorPage} (${(this.noErrorPage / this.numberOfPages! * 100).toFixed(2)}%)</span></li>
+          <li>Total e percentagem de páginas com pelo menos um erro de acessibilidade: <span>${this.atLeastOneError} (${(this.atLeastOneError / this.numberOfPages! * 100).toFixed(2)}%)</span></li>
+          <li>Total e percentagem de páginas com pelo menos um erro de acessibilidade de nível A: <span>${this.atLeastOneErrorA} (${(this.atLeastOneErrorA / this.numberOfPages! * 100).toFixed(2)}%)</span></li>
+          <li>Total e percentagem de páginas com pelo menos um erro de acessibilidade de nível AA: <span>${this.atLeastOneErrorAA} (${(this.atLeastOneErrorAA / this.numberOfPages! * 100).toFixed(2)}%)</span></li>
+          <li>Total e percentagem de páginas com pelo menos um erro de acessibilidade de nível AAA: <span>${this.atLeastOneErrorAAA} (${(this.atLeastOneErrorAAA / this.numberOfPages! * 100).toFixed(2)}%)</span></li>
           <li>Lista com os 10 erros de acessibilidade mais comuns no total de todas as páginas do website avaliadas: <span></span></li>
       </ul>
       <p>Data: ${new Date().toLocaleDateString()}</p>

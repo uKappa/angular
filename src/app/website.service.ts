@@ -4,6 +4,7 @@ import { interval, Observable, of, Subscription } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Url } from './url';
 import { Repo } from './repo';
+import { Rule } from './rule';
 
 
 @Injectable({
@@ -26,6 +27,15 @@ export class WebsiteService {
   getWebsite(_id: Object): Observable<Website> {
     const url = `${this.httpURL}/website/${_id}`;
     return this.http.get<Website>(url).pipe();
+  }
+
+  getUrl(_id: Object): Observable<Url> {
+    const url = `${this.httpURL}/url/${_id}`;
+    return this.http.get<Url>(url).pipe();
+  }
+
+  getRules(_id: Repo): Observable<Rule[]> {
+    return this.http.get<Rule[]>(`${this.httpURL}/rules/${_id}`).pipe();
   }
 
   getWebsites(): Observable<Website[]>{

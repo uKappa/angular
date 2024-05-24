@@ -6,5 +6,6 @@ export interface Rule {
     failed: number,
     inapplicable: number
     outcome: string,
-    ruleType: string
+    ruleType: string,
+    name: string
 }
