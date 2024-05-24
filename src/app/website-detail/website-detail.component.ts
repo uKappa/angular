@@ -26,7 +26,7 @@ export class WebsiteDetailComponent {
   
   reports: Repo[] = [];
 
-  urls?: Url[] = this.website?.urls;
+  //urls?: Url[] = this.website?.urls;
 
   numberOfPages = 1;
   noErrorPage = 0;
@@ -34,8 +34,6 @@ export class WebsiteDetailComponent {
   atLeastOneErrorA = 0;
   atLeastOneErrorAA = 0;
   atLeastOneErrorAAA = 0;
-
-  temp = 0;
   
   selectedUrl?: Url;
 
@@ -53,9 +51,13 @@ export class WebsiteDetailComponent {
 
   ngOnInit(): void {
     this.getWebsite();
+<<<<<<< HEAD
 
     this.mostrarSelectedPagina = false;
 
+=======
+    this.getReport();
+>>>>>>> 9caac0b727ec93d4b71c1ab1f694f5158239091b
     //this.datatimelimit = interval(5000)
     //try {
     //  this.datatimelimit=interval(5000).subscribe(response => {
@@ -70,36 +72,24 @@ export class WebsiteDetailComponent {
   getWebsite() {
     if (this.website && this.website._id) {
       const id = this.website._id;
-      this.websiteService.getWebsite(id).subscribe(x => this.website = x);
+      this.websiteService.getWebsite(id).subscribe(x => this.website! = x);
     }
   }
 
   getReport() {
-    if (this.website && this.website._id) {
-      const id = this.website._id;
-      this.websiteService.getReport(id).subscribe(
-        (repo: any) => {
-          if(repo != null && !this.reports.some(report => report.link === repo.link)){
-            this.reports.push(repo);
-          }
-        },
-    )}
-    if (this.temp == 0) {
-      console.log(this.reports);
-      this.getNoErrorPag()
-      this.getAtLeastOneErrorPag()
-      this.getAtLeastOneErrorPagA()
-      this.getAtLeastOneErrorPagAA()
-      this.getAtLeastOneErrorPagAAA()
-      this.temp += 1
-    }
+    //console.log(this.website!.urls);
+    this.getNoErrorPag()
+    this.getAtLeastOneErrorPag()
+    this.getAtLeastOneErrorPagA()
+    this.getAtLeastOneErrorPagAA()
+    this.getAtLeastOneErrorPagAAA()
   }
 
   getNoErrorPag() {
-    console.log(this.website!.urls)
+    //console.log(this.website?.urls)
     let count = -1;
     for (const url of this.website!.urls) {
-      if (!url.errorA && !url.errorAA && !url.errorAAA) {
+      if (!url.errorA && !url.errorAA && !url.errorAAA && url.estado!=EstadoPag.PorAvaliar) {
         this.noErrorPage += 1;
       }
     }
@@ -130,7 +120,8 @@ export class WebsiteDetailComponent {
   getAtLeastOneErrorPag() {
     let count = -1;
     for (const url of this.website!.urls) {
-      if (url.errorA || url.errorAA || url.errorAAA) {
+      console.log(url.estado)
+      if ((url.errorA || url.errorAA || url.errorAAA) && url.estado!=EstadoPag.PorAvaliar) {
         this.atLeastOneError += 1;
       }
     }
@@ -157,7 +148,8 @@ export class WebsiteDetailComponent {
     let count = -1;
     for (const url of this.website!.urls) {
       if (url.errorA) {
-        this.atLeastOneError += 1;
+        console.log(url.link)
+        this.atLeastOneErrorA += 1;
       }
     }
     //for (const report of this.reports) {
@@ -183,7 +175,7 @@ export class WebsiteDetailComponent {
     let count = -1;
     for (const url of this.website!.urls) {
       if (url.errorAA) {
-        this.atLeastOneError += 1;
+        this.atLeastOneErrorAA += 1;
       }
     }
     //for (const report of this.reports) {
@@ -209,7 +201,7 @@ export class WebsiteDetailComponent {
     let count = -1;
     for (const url of this.website!.urls) {
       if (url.errorAAA) {
-        this.atLeastOneError += 1;
+        this.atLeastOneErrorAAA += 1;
       }
     }
     //for (const report of this.reports) {
@@ -316,23 +308,18 @@ export class WebsiteDetailComponent {
     }
     this.websiteService.iniciarAvaliacaoUrl(this.selectedUrls).subscribe(x =>
       x.forEach(newUrl => {
-        console.log(newUrl);
+        //console.log(newUrl);
         for (let index = 0; index < this.website!.urls.length; index++) {
           if (this.website!.urls[index].link === newUrl.link) {
             this.website!.urls[index] = newUrl
           }
         }
-      },
-      this.getReport()
-    )); //guardar e buscar estatisticas diretamente ao urls do website
-    //this.selectedUrls.forEach(newUrl => {
-    //  for (let index = 0; index < this.website!.urls.length; index++) {
-    //    if (this.website!.urls[index].link === newUrl.link) {
-    //      this.website!.urls[index] =newUrl
-    //    }
-    //    
-    //  }
-    //});
+        console.log(this.website!.urls)
+        //this.getWebsite()
+        this.getReport()
+      })
+    );
+    console.log(this.website!.urls)
   }
 
   mostrarCheckboxes() {
