@@ -12,8 +12,8 @@ import { Rule } from './rule';
 })
 export class WebsiteService {
 
-  //httpURL = "http://10.101.151.25:3058/catalog"
-  httpURL = "http://localhost:3000/catalog"
+  httpURL = "http://10.101.151.25:3058/catalog"
+  //httpURL = "http://localhost:3000/catalog"
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

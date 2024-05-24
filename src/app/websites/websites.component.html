@@ -3,7 +3,7 @@
 
 <div class="options-container">
     <label for="sorting-option">Ordenar por:</label>
-    <mat-select id="sorting-option" [(ngModel)]="sortingOption" (change)="applyFilterAndSort()">
+    <mat-select id="sorting-option" [(ngModel)]="sortingOption" (selectionChange)="applyFilterAndSort()">
       <mat-option value="data_registo">Data de Registo</mat-option>
       <mat-option value="ultima_aval">Data da Última Avaliação</mat-option>
     </mat-select>
