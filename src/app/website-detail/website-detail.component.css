@@ -94,6 +94,18 @@ h3 {
     padding-left: 10px;
 }
 
+.detalhes-relatorio {
+    display: inline;
+    padding-left: 10px;
+    
+}
+
+.detalhes-relatorio button {
+    border-color: #222;
+    border: solid;
+    margin-right: 10px;
+}
+
 .select-button {
     border-color: #222;
     border: solid;

@@ -321,12 +321,12 @@ export class WebsiteDetailComponent {
 
   gerarRelatorio(): void {
 
-    const userChoice = confirm("Deseja gerar o relatório em PDF? Se cancelar, o relatório será gerado em HTML.");
+    const userChoice = confirm("Deseja gerar e exportar o relatório em HTML?");
     if (userChoice) {
-        this.generatePDF();
+      const reportHTML = this.generateHTML();
+      this.downloadHTML(reportHTML);
     } else {
-        const reportHTML = this.generateHTML();
-        this.downloadHTML(reportHTML);
+        
     }
 
   }
