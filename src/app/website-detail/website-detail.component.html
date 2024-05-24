@@ -76,8 +76,7 @@
 </div>
 
 <div *ngIf="selectedUrlPagina && mostrarSelectedPagina" class="pagina-details">
-  <h3>{{selectedUrlPagina?.link}}</h3>
-  <p>detalhes</p>
+  <app-website-acessibilidade [selectedUrlPagina]="selectedUrlPagina"></app-website-acessibilidade>
 </div>
 
   

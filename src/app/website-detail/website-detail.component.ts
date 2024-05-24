@@ -51,13 +51,10 @@ export class WebsiteDetailComponent {
 
   ngOnInit(): void {
     this.getWebsite();
-<<<<<<< HEAD
 
     this.mostrarSelectedPagina = false;
 
-=======
     this.getReport();
->>>>>>> 9caac0b727ec93d4b71c1ab1f694f5158239091b
     //this.datatimelimit = interval(5000)
     //try {
     //  this.datatimelimit=interval(5000).subscribe(response => {

@@ -10,12 +10,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { WebsiteAcessibilidadeComponent } from './website-acessibilidade/website-acessibilidade.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     WebsitesComponent,
-    WebsiteDetailComponent
+    WebsiteDetailComponent,
+    WebsiteAcessibilidadeComponent
   ],
   imports: [
     BrowserModule,
